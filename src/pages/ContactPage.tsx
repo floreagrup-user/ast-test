@@ -1,197 +1,332 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, Navigation, Send, CheckCircle } from 'lucide-react'
-import { countyReps, getRepByCounty, factories } from '@/data/site'
+import { Phone, Mail, MapPin, CheckCircle, Loader2 } from 'lucide-react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { Layout } from '@/components/layout/Layout'
+import { contactFormSchema, type ContactFormData } from '@/lib/schemas'
 
-const counties = [
-  { label: 'Alba', code: 'AB' }, { label: 'Arad', code: 'AR' }, { label: 'Argeș', code: 'AG' },
-  { label: 'Bacău', code: 'BC' }, { label: 'Bihor', code: 'BH' }, { label: 'Bistrița-Năsăud', code: 'BN' },
-  { label: 'Botoșani', code: 'BT' }, { label: 'Brașov', code: 'BV' }, { label: 'Brăila', code: 'BR' },
-  { label: 'București', code: 'B' }, { label: 'Buzău', code: 'BZ' }, { label: 'Caraș-Severin', code: 'CS' },
-  { label: 'Călărași', code: 'CL' }, { label: 'Cluj', code: 'CJ' }, { label: 'Constanța', code: 'CT' },
-  { label: 'Covasna', code: 'CV' }, { label: 'Dâmbovița', code: 'DB' }, { label: 'Dolj', code: 'DJ' },
-  { label: 'Galați', code: 'GL' }, { label: 'Giurgiu', code: 'GR' }, { label: 'Gorj', code: 'GJ' },
-  { label: 'Harghita', code: 'HR' }, { label: 'Hunedoara', code: 'HD' }, { label: 'Ialomița', code: 'IL' },
-  { label: 'Iași', code: 'IS' }, { label: 'Ilfov', code: 'IF' }, { label: 'Maramureș', code: 'MM' },
-  { label: 'Mehedinți', code: 'MH' }, { label: 'Mureș', code: 'MS' }, { label: 'Neamț', code: 'NT' },
-  { label: 'Olt', code: 'OT' }, { label: 'Prahova', code: 'PH' }, { label: 'Satu Mare', code: 'SM' },
-  { label: 'Sălaj', code: 'SJ' }, { label: 'Sibiu', code: 'SB' }, { label: 'Suceava', code: 'SV' },
-  { label: 'Teleorman', code: 'TR' }, { label: 'Timiș', code: 'TM' }, { label: 'Tulcea', code: 'TL' },
-  { label: 'Vaslui', code: 'VS' }, { label: 'Vâlcea', code: 'VL' }, { label: 'Vrancea', code: 'VN' },
+const subjects = [
+  { value: 'rezervare-camera', label: 'Rezervare cameră' },
+  { value: 'rezervare-restaurant', label: 'Rezervare restaurant' },
+  { value: 'eveniment', label: 'Eveniment' },
+  { value: 'pool-park', label: 'Pool Park' },
+  { value: 'altele', label: 'Altele' },
 ]
 
 export function ContactPage() {
-  const [selectedCounty, setSelectedCounty] = useState('')
-  const [formSubmitted, setFormSubmitted] = useState(false)
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', county: '', message: '', gdpr: false })
+  const [searchParams] = useSearchParams()
+  const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const rep = selectedCounty ? getRepByCounty(selectedCounty) : null
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      subiect: (searchParams.get('subiect') as ContactFormData['subiect']) || 'altele',
+    },
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setFormSubmitted(true)
-    setTimeout(() => setFormSubmitted(false), 5000)
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true)
+    // Mock submission - replace with actual API call
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    console.log('Form data:', data)
+    setIsSubmitting(false)
+    setSubmitted(true)
+    reset()
   }
 
   return (
-    <div className="pt-20 md:pt-24">
-      <section className="bg-charcoal-950 text-white py-16 md:py-20">
-        <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="heading-h1 mb-4">Contact</h1>
-            <p className="text-body-lg text-charcoal-400 max-w-2xl">
-              Selectează județul tău pentru a vedea reprezentantul de vânzări din zona ta sau trimite-ne un mesaj direct.
-            </p>
-          </motion.div>
+    <Layout>
+      <Helmet>
+        <title>Contact — Hotel Astoria Alba Iulia</title>
+        <meta name="description" content="Contactează Hotel Astoria Alba Iulia. Telefon: +40 731 190 948. Email: office@astoriahotels.ro. DN 1, km 387, Alba Iulia." />
+      </Helmet>
+
+      {/* Hero */}
+      <section className="relative h-[30vh] min-h-[200px] flex items-end pb-8 overflow-hidden">
+        <div className="absolute inset-0 bg-primary" />
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'radial-gradient(circle at 25% 25%, white 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }} />
+        <div className="relative container-xl z-10">
+          <h1 className="font-display text-4xl md:text-5xl font-normal text-white tracking-tight">
+            Contactează-ne
+          </h1>
         </div>
       </section>
 
+      {/* Content */}
       <section className="py-16 md:py-24">
-        <div className="container-premium">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="container-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Contact info */}
             <div>
-              <h2 className="heading-h2 text-charcoal-900 mb-6">Selectează Județul</h2>
-              <p className="text-charcoal-500 mb-6">Alege județul pentru a vedea reprezentantul tău de vânzări.</p>
+              <h2 className="font-display text-2xl font-normal mb-8">Informații de contact</h2>
+              <ul className="space-y-6 mb-10">
+                <li>
+                  <a href="tel:+40731190948" className="flex items-start gap-4 group">
+                    <div className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
+                      <Phone className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-muted">Telefon</p>
+                      <p className="font-medium group-hover:text-accent transition-colors">+40 731 190 948</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+40258842335" className="flex items-start gap-4 group">
+                    <div className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
+                      <Phone className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-muted">Telefon fix</p>
+                      <p className="font-medium group-hover:text-accent transition-colors">+40 258 842 335</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:office@astoriahotels.ro" className="flex items-start gap-4 group">
+                    <div className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
+                      <Mail className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-muted">Email</p>
+                      <p className="font-medium group-hover:text-accent transition-colors">office@astoriahotels.ro</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <span className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center shrink-0">
+                      <MapPin className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-muted">Adresă</p>
+                      <p className="font-medium">DN 1, km 387, Alba Iulia, Alba</p>
+                    </div>
+                  </span>
+                </li>
+              </ul>
 
-              <div className="relative mb-8">
-                <select
-                  value={selectedCounty}
-                  onChange={(e) => setSelectedCounty(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-charcoal-200 rounded-xl text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all appearance-none"
-                >
-                  <option value="">Alege județul...</option>
-                  {counties.map((c) => (
-                    <option key={c.code} value={c.code}>{c.label}</option>
-                  ))}
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="w-4 h-4 text-charcoal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+              {/* Social */}
+              <div className="mb-10">
+                <p className="text-sm text-text-muted mb-3">Urmărește-ne</p>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.facebook.com/AstoriaHotelAlbaIulia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                    aria-label="Facebook"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/astoriahotelalba"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                    aria-label="Instagram"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  </a>
                 </div>
               </div>
 
-              {rep ? (
+              {/* Map */}
+              <div className="aspect-video rounded-sm overflow-hidden border border-border">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2775.5!2d23.5833!3d46.0667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDA0JzAwLjAiTiAyM8KwMzUnMDAuMCJF!5e0!3m2!1sen!2sro!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Locație Hotel Astoria pe Google Maps"
+                />
+              </div>
+            </div>
+
+            {/* Form */}
+            <div>
+              <h2 className="font-display text-2xl font-normal mb-8">Trimite un mesaj</h2>
+
+              {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-6 bg-charcoal-50 rounded-xl"
+                  className="bg-success/5 border border-success/20 rounded-sm p-8 text-center"
                 >
-                  <h3 className="text-lg font-semibold text-charcoal-900 mb-4">Reprezentantul tău</h3>
-                  <div className="space-y-3">
-                    <p className="text-charcoal-900 font-medium">{rep.name}</p>
-                    <a href={`mailto:${rep.email}`} className="flex items-center gap-2 text-charcoal-600 hover:text-brand-600 transition-colors">
-                      <Mail className="w-4 h-4" />
-                      {rep.email}
-                    </a>
-                    <a href={`tel:${rep.phone}`} className="flex items-center gap-2 text-charcoal-600 hover:text-brand-600 transition-colors">
-                      <Phone className="w-4 h-4" />
-                      {rep.phone}
-                    </a>
-                    <div className="flex gap-3 pt-2">
-                      <a href={`tel:${rep.phone}`} className="btn-primary text-sm px-4 py-2">
-                        Sună acum
-                      </a>
-                      <a
-                        href={`https://wa.me/${rep.phone.replace(/\s/g, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-secondary text-sm px-4 py-2"
-                      >
-                        WhatsApp
-                      </a>
+                  <CheckCircle className="w-12 h-12 text-success mx-auto mb-4" />
+                  <h3 className="font-display text-xl font-normal mb-2">Mesaj trimis!</h3>
+                  <p className="text-text-muted text-sm mb-6">
+                    Îți mulțumim! Te vom contacta în cel mai scurt timp.
+                  </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="text-sm text-primary hover:text-accent transition-colors font-medium"
+                  >
+                    Trimite un alt mesaj
+                  </button>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="nume" className="text-sm font-medium block mb-1.5">
+                        Nume <span className="text-error">*</span>
+                      </label>
+                      <input
+                        id="nume"
+                        type="text"
+                        {...register('nume')}
+                        className={`w-full px-4 py-3 border rounded-sm text-sm outline-none transition-colors ${
+                          errors.nume ? 'border-error' : 'border-border focus:border-accent'
+                        }`}
+                        aria-invalid={!!errors.nume}
+                        aria-describedby={errors.nume ? 'nume-error' : undefined}
+                      />
+                      {errors.nume && (
+                        <p id="nume-error" className="text-xs text-error mt-1" role="alert">
+                          {errors.nume.message}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <label htmlFor="prenume" className="text-sm font-medium block mb-1.5">
+                        Prenume <span className="text-error">*</span>
+                      </label>
+                      <input
+                        id="prenume"
+                        type="text"
+                        {...register('prenume')}
+                        className={`w-full px-4 py-3 border rounded-sm text-sm outline-none transition-colors ${
+                          errors.prenume ? 'border-error' : 'border-border focus:border-accent'
+                        }`}
+                        aria-invalid={!!errors.prenume}
+                        aria-describedby={errors.prenume ? 'prenume-error' : undefined}
+                      />
+                      {errors.prenume && (
+                        <p id="prenume-error" className="text-xs text-error mt-1" role="alert">
+                          {errors.prenume.message}
+                        </p>
+                      )}
                     </div>
                   </div>
-                </motion.div>
-              ) : (
-                <p className="text-charcoal-400 text-sm italic">Selectează județul pentru a vedea reprezentantul de vânzări din zona ta.</p>
-              )}
-            </div>
 
-            <div>
-              <h2 className="heading-h2 text-charcoal-900 mb-6">Trimite-ne un mesaj</h2>
-              {formSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="p-8 bg-stone-100 rounded-xl text-center"
-                >
-                  <CheckCircle className="w-12 h-12 text-brand-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-charcoal-900 mb-2">Mesaj trimis cu succes!</h3>
-                  <p className="text-charcoal-500">Te vom contacta în cel mai scurt timp.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Numele tău *"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-white border border-charcoal-200 rounded-xl text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all"
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="email" className="text-sm font-medium block mb-1.5">
+                        Email <span className="text-error">*</span>
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        {...register('email')}
+                        className={`w-full px-4 py-3 border rounded-sm text-sm outline-none transition-colors ${
+                          errors.email ? 'border-error' : 'border-border focus:border-accent'
+                        }`}
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? 'email-error' : undefined}
+                      />
+                      {errors.email && (
+                        <p id="email-error" className="text-xs text-error mt-1" role="alert">
+                          {errors.email.message}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <label htmlFor="telefon" className="text-sm font-medium block mb-1.5">
+                        Telefon
+                      </label>
+                      <input
+                        id="telefon"
+                        type="tel"
+                        {...register('telefon')}
+                        className="w-full px-4 py-3 border border-border rounded-sm text-sm outline-none focus:border-accent transition-colors"
+                      />
+                    </div>
                   </div>
+
                   <div>
-                    <input
-                      type="email"
-                      placeholder="Email *"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-white border border-charcoal-200 rounded-xl text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="tel"
-                      placeholder="Telefon"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-white border border-charcoal-200 rounded-xl text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all"
-                    />
-                  </div>
-                  <div>
+                    <label htmlFor="subiect" className="text-sm font-medium block mb-1.5">
+                      Subiect <span className="text-error">*</span>
+                    </label>
                     <select
-                      value={formData.county}
-                      onChange={(e) => setFormData({ ...formData, county: e.target.value })}
-                      className="w-full px-4 py-3 bg-white border border-charcoal-200 rounded-xl text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all appearance-none"
+                      id="subiect"
+                      {...register('subiect')}
+                      className="w-full px-4 py-3 border border-border rounded-sm text-sm outline-none focus:border-accent transition-colors bg-white"
                     >
-                      <option value="">Județul tău</option>
-                      {counties.map((c) => (
-                        <option key={c.code} value={c.code}>{c.label}</option>
+                      {subjects.map((s) => (
+                        <option key={s.value} value={s.value}>{s.label}</option>
                       ))}
                     </select>
                   </div>
+
                   <div>
+                    <label htmlFor="mesaj" className="text-sm font-medium block mb-1.5">
+                      Mesaj <span className="text-error">*</span>
+                    </label>
                     <textarea
-                      placeholder="Mesaj *"
-                      required
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 bg-white border border-charcoal-200 rounded-xl text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all resize-none"
+                      id="mesaj"
+                      rows={5}
+                      {...register('mesaj')}
+                      className={`w-full px-4 py-3 border rounded-sm text-sm outline-none transition-colors resize-none ${
+                        errors.mesaj ? 'border-error' : 'border-border focus:border-accent'
+                      }`}
+                      aria-invalid={!!errors.mesaj}
+                      aria-describedby={errors.mesaj ? 'mesaj-error' : undefined}
                     />
+                    {errors.mesaj && (
+                      <p id="mesaj-error" className="text-xs text-error mt-1" role="alert">
+                        {errors.mesaj.message}
+                      </p>
+                    )}
                   </div>
-                  <label className="flex items-start gap-3 cursor-pointer">
+
+                  <div className="flex items-start gap-3">
                     <input
+                      id="gdpr"
                       type="checkbox"
-                      required
-                      checked={formData.gdpr}
-                      onChange={(e) => setFormData({ ...formData, gdpr: e.target.checked })}
-                      className="mt-1"
+                      {...register('gdpr')}
+                      className="mt-1 w-4 h-4 rounded border-border text-accent focus:ring-accent"
                     />
-                    <span className="text-sm text-charcoal-500">
-                      Sunt de acord ca datele mele să fie prelucrate conform Regulamentului (UE) 2016/679.
-                    </span>
-                  </label>
-                  <button type="submit" className="btn-primary w-full justify-center group">
-                    <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                    Trimite mesaj
+                    <label htmlFor="gdpr" className="text-sm text-text-muted">
+                      Sunt de acord cu{' '}
+                      <Link to="/politica-confidentialitate" className="text-primary hover:underline">
+                        politica de confidențialitate
+                      </Link>{' '}
+                      și prelucrarea datelor personale. <span className="text-error">*</span>
+                    </label>
+                  </div>
+                  {errors.gdpr && (
+                    <p className="text-xs text-error" role="alert">{errors.gdpr.message}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-white font-medium py-3.5 rounded-sm hover:bg-primary-light transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Se trimite...
+                      </>
+                    ) : (
+                      'Trimite mesajul'
+                    )}
                   </button>
                 </form>
               )}
@@ -199,66 +334,6 @@ export function ContactPage() {
           </div>
         </div>
       </section>
-
-      <section className="py-16 md:py-24 bg-charcoal-50">
-        <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="heading-h2 text-charcoal-900 mb-4">Fabricile Noastre</h2>
-            <p className="text-body-lg text-charcoal-500 max-w-2xl mx-auto">
-              4 centre de producție strategic poziționate pentru a fi mereu aproape de tine.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {factories.map((factory, index) => (
-              <motion.div
-                key={factory.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="p-6 bg-white rounded-xl shadow-md"
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center text-sm font-bold">
-                    {index + 1}
-                  </span>
-                  <h3 className="font-semibold text-charcoal-900">{factory.name}</h3>
-                </div>
-                <div className="space-y-2 text-sm text-charcoal-600">
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-brand-500 mt-0.5 shrink-0" />
-                    <span>{factory.address}</span>
-                  </div>
-                  <a href={`tel:${factory.phone}`} className="flex items-center gap-2 hover:text-brand-600 transition-colors">
-                    <Phone className="w-4 h-4 text-brand-500 shrink-0" />
-                    {factory.phone}
-                  </a>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-brand-500 shrink-0" />
-                    <span>{factory.schedule}</span>
-                  </div>
-                </div>
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${factory.lat},${factory.lng}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-4 text-sm text-brand-600 hover:text-brand-700 font-medium transition-colors"
-                >
-                  <Navigation className="w-4 h-4" />
-                  Navigare GPS
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+    </Layout>
   )
 }

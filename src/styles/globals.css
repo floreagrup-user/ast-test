@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-primary: #1B3A2F;
+  --color-primary-light: #2D5C4A;
+  --color-accent: #C9A961;
+  --color-accent-light: #E0C896;
+
+  /* Neutrals */
+  --color-bg: #FAF8F4;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-text-muted: #6B6B6B;
+  --color-border: #E8E4DC;
+
+  /* Functional */
+  --color-success: #2D7A5F;
+  --color-error: #B84A3E;
+
+  /* Fonts */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* Easing */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px 16px;
+  z-index: 10000;
+  transition: top 0.2s var(--ease-smooth);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Typography scale */
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: clamp(1.5rem, 2vw, 2rem); line-height: 2.25rem; }
+.text-3xl { font-size: clamp(1.875rem, 3vw, 2.5rem); line-height: 2.5rem; }
+.text-4xl { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; }
+.text-5xl { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; }
+.text-6xl { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; }
+
+/* Utility: decorative number background */
+.deco-number {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 12vw, 10rem);
+  font-weight: 300;
+  color: var(--color-accent);
+  opacity: 0.08;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  right: 1rem;
+  top: -0.5rem;
+}
+
+/* Image placeholder */
+.img-placeholder {
+  background: linear-gradient(135deg, var(--color-border) 0%, var(--color-bg) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 300ms var(--ease-smooth);
+}
+
+/* Container max width */
+.container-xl {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-xl {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
