@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Star, Wifi, Wind, Droplets, Coffee, Phone, Tv, ShowerHead, Minus } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { rooms } from '@/data/rooms'
+import { Layout } from '@/components/layout/Layout'
 import { SectionTitle } from '@/components/shared/SectionTitle'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
 
@@ -26,7 +27,8 @@ const amenityIcons: Record<string, React.ElementType> = {
 
 export function RoomsListingPage() {
   return (
-    <div className="min-h-screen">
+    <Layout>
+      <div className="min-h-screen">
       {/* Hero */}
       <section className="relative h-[50vh] min-h-[350px] flex items-end pb-12 overflow-hidden">
         <div className="absolute inset-0">
@@ -126,5 +128,6 @@ export function RoomsListingPage() {
         </div>
       </section>
     </div>
+    </Layout>
   )
 }
