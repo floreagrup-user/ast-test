@@ -1,17 +1,17 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
-import { images } from '@/data/images'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
 
 const galleryImages = [
-  { src: images.hero.wedding, alt: 'Nuntă la Astoria cu lacul în fundal', span: 'md:col-span-2 md:row-span-2' },
-  { src: images.restaurant.main, alt: 'Restaurant Astoria interior' },
-  { src: images.rooms.apartament, alt: 'Apartament 4 stele' },
-  { src: images.pool.day, alt: 'Pool Park ziua' },
-  { src: images.pool.night, alt: 'Pool Park noaptea' },
-  { src: images.restaurant.food, alt: 'Preparate restaurant' },
-  { src: images.rooms.dubla, alt: 'Cameră standard dublă' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie18.webp', alt: 'Hotel Astoria locație 18', span: 'md:col-span-2 md:row-span-2' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie24.webp', alt: 'Hotel Astoria locație 24' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie8.webp', alt: 'Hotel Astoria locație 8' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie16.webp', alt: 'Hotel Astoria locație 16' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie25.webp', alt: 'Hotel Astoria locație 25' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie11.webp', alt: 'Hotel Astoria locație 11' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie9.webp', alt: 'Hotel Astoria locație 9' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie4.webp', alt: 'Hotel Astoria locație 4' },
 ]
 
 export function GalleryGrid() {
@@ -27,6 +27,17 @@ export function GalleryGrid() {
   const goPrev = useCallback(() => {
     setLightboxIndex((prev) => (prev !== null ? (prev - 1 + galleryImages.length) % galleryImages.length : null))
   }, [])
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') goNext()
+      if (e.key === 'ArrowLeft') goPrev()
+      if (e.key === 'Escape') closeLightbox()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [lightboxIndex, goNext, goPrev, closeLightbox])
 
   return (
     <section className="py-20 md:py-28 bg-surface" aria-labelledby="gallery-title">
