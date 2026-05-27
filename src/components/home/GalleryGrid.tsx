@@ -12,6 +12,7 @@ const galleryImages = [
   { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie11.webp', alt: 'Hotel Astoria locație 11' },
   { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie9.webp', alt: 'Hotel Astoria locație 9' },
   { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie4.webp', alt: 'Hotel Astoria locație 4' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie21.webp', alt: 'Hotel Astoria locație 21' },
 ]
 
 export function GalleryGrid() {
