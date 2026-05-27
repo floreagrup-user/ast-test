@@ -33,7 +33,7 @@ export function RoomsPreview() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className={`group relative bg-bg rounded-sm overflow-hidden border border-border hover:shadow-xl transition-all duration-500 ${
-                room.popular ? 'md:-mt-4 md:mb-4 ring-2 ring-accent/30' : ''
+                room.popular ? 'ring-2 ring-accent/30' : ''
               }`}
             >
               {room.popular && (

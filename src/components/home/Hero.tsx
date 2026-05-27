@@ -31,19 +31,18 @@ export function Hero() {
     <section className="relative h-screen min-h-[600px] flex items-end pb-24 md:pb-32 overflow-hidden" aria-label="Hero">
       {/* Background slideshow */}
       <div className="absolute inset-0">
-        <AnimatePresence mode="wait">
+        {heroSlides.map((src, i) => (
           <motion.img
-            key={heroSlides[current]}
-            src={heroSlides[current]}
+            key={src}
+            src={src}
             alt="Vedere panoramică Hotel Astoria"
             className="absolute inset-0 w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: 'easeInOut' }}
-            fetchPriority={current === 0 ? 'high' : 'low'}
+            initial={false}
+            animate={{ opacity: i === current ? 1 : 0 }}
+            transition={{ duration: 1.8, ease: 'easeInOut' }}
+            fetchPriority={i === 0 ? 'high' : 'low'}
           />
-        </AnimatePresence>
+        ))}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       </div>
 
