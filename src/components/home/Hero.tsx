@@ -1,29 +1,64 @@
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowDown } from 'lucide-react'
-import { images } from '@/data/images'
+
+const heroSlides = [
+  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie28.webp',
+  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie27.webp',
+  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie18.webp',
+]
 
 export function Hero() {
-  const [loaded, setLoaded] = useState(false)
+  const [current, setCurrent] = useState(0)
+
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % heroSlides.length)
+  }, [])
 
   useEffect(() => {
-    const img = new Image()
-    img.src = images.hero.wedding
-    img.onload = () => setLoaded(true)
+    heroSlides.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000)
+    return () => clearInterval(timer)
+  }, [next])
 
   return (
     <section className="relative h-screen min-h-[600px] flex items-end pb-24 md:pb-32 overflow-hidden" aria-label="Hero">
-      {/* Background */}
+      {/* Background slideshow */}
       <div className="absolute inset-0">
-        <img
-          src={images.hero.wedding}
-          alt="Vedere panoramică Hotel Astoria cu lacul și grădina interioară"
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-          fetchPriority="high"
-        />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={heroSlides[current]}
+            src={heroSlides[current]}
+            alt="Vedere panoramică Hotel Astoria"
+            className="absolute inset-0 w-full h-full object-cover"
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, ease: 'easeInOut' }}
+            fetchPriority={current === 0 ? 'high' : 'low'}
+          />
+        </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+      </div>
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-48 md:bottom-56 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {heroSlides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`h-1 rounded-full transition-all duration-500 ${
+              i === current ? 'w-8 bg-accent' : 'w-4 bg-white/40 hover:bg-white/60'
+            }`}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
 
       {/* Content */}
