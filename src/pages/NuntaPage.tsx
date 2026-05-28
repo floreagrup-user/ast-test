@@ -233,43 +233,43 @@ export function NuntaPage() {
           </h2>
           <div className="w-12 h-px bg-accent mx-auto mt-5" />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1">
-          {galleryImages.map((src, i) => (
-            <div
-              key={src}
-              className={`overflow-hidden cursor-pointer relative group ${
-                i === 0 ? 'col-span-2 row-span-2' : ''
-              } ${i === 4 ? 'md:col-span-2' : ''} ${
-                i === 8 ? 'md:col-span-2 md:row-span-2' : ''
-              } ${i === 13 ? 'md:col-span-2' : ''} ${
-                i === 16 ? 'md:col-span-2 md:row-span-2' : ''
-              }`}
-            >
-              <img
-                src={src}
-                alt={`Nuntă Hotel Astoria fotografie ${i + 1}`}
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-106"
-                style={{ minHeight: i === 0 ? '480px' : '200px' }}
-                onClick={() => openLb(i)}
-              />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1" style={{ gridAutoRows: '220px' }}>
+          {galleryImages.map((src, i) => {
+            const isDouble = i === 0 || i === 8 || i === 16
+            const isWide = i === 4 || i === 13
+            return (
               <div
-                className="absolute inset-0 bg-primary/0 group-hover:bg-primary/35 transition-all duration-400 flex items-center justify-center cursor-pointer"
+                key={src}
+                className={`relative group cursor-pointer overflow-hidden ${
+                  i === 0 ? 'col-span-2 row-span-2' : ''
+                } ${isWide ? 'md:col-span-2' : ''} ${
+                  isDouble && i !== 0 ? 'md:col-span-2 md:row-span-2' : ''
+                }`}
+                style={{ minHeight: isDouble ? '440px' : '220px' }}
                 onClick={() => openLb(i)}
               >
-                <svg
-                  className="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 scale-80 group-hover:scale-100"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                >
-                  <circle cx="11" cy="11" r="8" />
-                  <path d="m21 21-4.35-4.35" />
-                </svg>
+                <div className="absolute inset-0 bg-[#EDE7DC]" />
+                <img
+                  src={src}
+                  alt={`Nuntă Hotel Astoria fotografie ${i + 1}`}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-600 group-hover:scale-106"
+                />
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/35 transition-all duration-400 flex items-center justify-center">
+                  <svg
+                    className="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 scale-80 group-hover:scale-100"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                  </svg>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </section>
 
