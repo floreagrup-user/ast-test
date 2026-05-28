@@ -1,7 +1,8 @@
+import { useState, useCallback, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Clock, Phone, Star, Utensils, Coffee, PartyPopper } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Clock, Phone, Star, Utensils, Coffee, PartyPopper, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
 import { images } from '@/data/images'
 import { restaurantTestimonials } from '@/data/testimonials'
@@ -26,7 +27,52 @@ const experiences = [
   },
 ]
 
+const restaurantGalleryImages = [
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/restaurant-2.webp', alt: 'Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/restaurant-6.webp', alt: 'Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-2.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-3.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-4.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-6.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-8.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-14.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-12.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-19.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-24.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-17.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-26.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-25.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-20.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-31.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-29.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food-33.webp', alt: 'Preparate Restaurant Astoria' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/food.webp', alt: 'Preparate Restaurant Astoria' },
+]
+
 export function RestaurantPage() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  const openLightbox = useCallback((index: number) => setLightboxIndex(index), [])
+  const closeLightbox = useCallback(() => setLightboxIndex(null), [])
+
+  const goNext = useCallback(() => {
+    setLightboxIndex((prev) => (prev !== null ? (prev + 1) % restaurantGalleryImages.length : null))
+  }, [])
+
+  const goPrev = useCallback(() => {
+    setLightboxIndex((prev) => (prev !== null ? (prev - 1 + restaurantGalleryImages.length) % restaurantGalleryImages.length : null))
+  }, [])
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') goNext()
+      if (e.key === 'ArrowLeft') goPrev()
+      if (e.key === 'Escape') closeLightbox()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [lightboxIndex, goNext, goPrev, closeLightbox])
   return (
     <Layout>
       <Helmet>
@@ -63,7 +109,7 @@ export function RestaurantPage() {
       <section className="relative h-[50vh] min-h-[350px] flex items-end pb-12 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={images.restaurant.main}
+            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/restaurant-5.webp"
             alt="Interior Restaurant Astoria"
             className="w-full h-full object-cover"
             fetchPriority="high"
@@ -113,14 +159,84 @@ export function RestaurantPage() {
           </div>
 
           {/* Gallery */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
-            <div className="aspect-[4/3] rounded-sm overflow-hidden">
-              <ImageWithFallback src={images.restaurant.food} alt="Preparate restaurant Astoria" className="w-full h-full" />
-            </div>
-            <div className="aspect-[4/3] rounded-sm overflow-hidden">
-              <ImageWithFallback src={images.restaurant.service} alt="Servire masă la Restaurant Astoria" className="w-full h-full" />
+          <div className="mb-16">
+            <h2 className="font-display text-3xl md:text-4xl font-normal tracking-tight text-center mb-12">
+              Restaurant <em className="not-italic italic text-accent">Astoria</em>
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+              {restaurantGalleryImages.map((img, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => openLightbox(index)}
+                  className="relative overflow-hidden rounded-sm cursor-pointer group aspect-square"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.03 }}
+                  whileHover={{ scale: 1.02 }}
+                  aria-label={`Deschide imaginea: ${img.alt}`}
+                >
+                  <ImageWithFallback
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full group-hover:scale-105 transition-transform duration-600"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                </motion.button>
+              ))}
             </div>
           </div>
+
+          {/* Lightbox */}
+          <AnimatePresence>
+            {lightboxIndex !== null && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+                onClick={closeLightbox}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Galerie foto lightbox"
+              >
+                <button
+                  onClick={closeLightbox}
+                  className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white"
+                  aria-label="Închide lightbox"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={(e) => { e.stopPropagation(); goPrev() }}
+                  className="absolute left-4 z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white"
+                  aria-label="Imaginea anterioară"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={(e) => { e.stopPropagation(); goNext() }}
+                  className="absolute right-4 z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white"
+                  aria-label="Imaginea următoare"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                <motion.img
+                  key={lightboxIndex}
+                  src={restaurantGalleryImages[lightboxIndex].src}
+                  alt={restaurantGalleryImages[lightboxIndex].alt}
+                  className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Info */}
           <div className="bg-primary text-white rounded-sm p-6 md:p-10 text-center mb-16">
