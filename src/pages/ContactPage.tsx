@@ -84,17 +84,6 @@ export function ContactPage() {
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+40258842335" className="flex items-start gap-4 group">
-                    <div className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
-                      <Phone className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-text-muted">Telefon fix</p>
-                      <p className="font-medium group-hover:text-accent transition-colors">+40 258 842 335</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
                   <a href="mailto:office@astoriahotels.ro" className="flex items-start gap-4 group">
                     <div className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
                       <Mail className="w-5 h-5 text-primary" />

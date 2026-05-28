@@ -154,15 +154,6 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+40258842335"
-                  className="flex items-start gap-3 text-sm text-white/60 hover:text-accent transition-colors"
-                >
-                  <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                  <span>+40 258 842 335</span>
-                </a>
-              </li>
-              <li>
-                <a
                   href="mailto:office@astoriahotels.ro"
                   className="flex items-start gap-3 text-sm text-white/60 hover:text-accent transition-colors"
                 >
