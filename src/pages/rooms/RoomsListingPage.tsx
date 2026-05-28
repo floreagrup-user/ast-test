@@ -33,7 +33,7 @@ export function RoomsListingPage() {
       <section className="relative h-[50vh] min-h-[350px] flex items-end pb-12 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/rooms/astoria-camera-apartament.jpg"
+            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-7.webp"
             alt="Camere Hotel Astoria"
             className="w-full h-full object-cover"
           />
