@@ -32,8 +32,28 @@ const stats = [
 ]
 
 const poolGalleryImages = [
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-2.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-3.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-4.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-5.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-6.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-7.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-8.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-9.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-10.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-11.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-12.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-13.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-14.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-15.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-16.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-17.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-18.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-19.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-20.webp', alt: 'Astoria Pool Park' },
   { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp', alt: 'Astoria Pool Park' },
-  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-22.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-23.webp', alt: 'Astoria Pool Park' },
 ]
 
 export function PoolParkPage() {
@@ -74,7 +94,7 @@ export function PoolParkPage() {
       <section className="relative h-[70vh] min-h-[450px] flex items-end pb-16 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-10.webp"
+            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp"
             alt="Astoria Pool Park"
             className="w-full h-full object-cover"
             fetchPriority="high"
@@ -249,7 +269,7 @@ export function PoolParkPage() {
                 <em className="not-italic italic text-accent">Pool Park</em>
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
               {poolGalleryImages.map((img, index) => (
                 <motion.button
                   key={index}
