@@ -10,12 +10,9 @@ const heroSlides = [
   'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria11.webp',
 ]
 
-const galleryImages = [
-  ...Array.from({ length: 20 }, (_, i) =>
-    `https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria${i + 1}.webp`
-  ),
-  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/restaurant-6.webp',
-]
+const galleryImages = Array.from({ length: 20 }, (_, i) =>
+  `https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria${i + 1}.webp`
+)
 
 const features = [
   {

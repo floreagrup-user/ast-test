@@ -22,6 +22,7 @@ export default defineConfig({
         '/pool-park/meniu',
         '/evenimente',
         '/evenimente/nunta',
+        '/evenimente/botez',
         '/sustenabilitate',
         '/welcome-to-alba',
         '/contact',
