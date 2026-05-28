@@ -1,7 +1,8 @@
+import { useState, useCallback, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Waves, Droplets, Sun, GlassWater, Umbrella, ShowerHead, Wifi, Volleyball, Trophy, Table2, Music, Sparkles, Timer, Trees } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Waves, Droplets, Sun, GlassWater, Umbrella, ShowerHead, Wifi, Volleyball, Trophy, Table2, Music, Sparkles, Timer, Trees, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
 
@@ -30,7 +31,35 @@ const stats = [
   { value: '09:00–21:00', unit: '', label: 'program zilnic' },
 ]
 
+const poolGalleryImages = [
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp', alt: 'Astoria Pool Park' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp', alt: 'Astoria Pool Park' },
+]
+
 export function PoolParkPage() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  const openLightbox = useCallback((index: number) => setLightboxIndex(index), [])
+  const closeLightbox = useCallback(() => setLightboxIndex(null), [])
+
+  const goNext = useCallback(() => {
+    setLightboxIndex((prev) => (prev !== null ? (prev + 1) % poolGalleryImages.length : null))
+  }, [])
+
+  const goPrev = useCallback(() => {
+    setLightboxIndex((prev) => (prev !== null ? (prev - 1 + poolGalleryImages.length) % poolGalleryImages.length : null))
+  }, [])
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') goNext()
+      if (e.key === 'ArrowLeft') goPrev()
+      if (e.key === 'Escape') closeLightbox()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [lightboxIndex, goNext, goPrev, closeLightbox])
   return (
     <Layout>
       <Helmet>
@@ -45,7 +74,7 @@ export function PoolParkPage() {
       <section className="relative h-[70vh] min-h-[450px] flex items-end pb-16 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp"
+            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-10.webp"
             alt="Astoria Pool Park"
             className="w-full h-full object-cover"
             fetchPriority="high"
@@ -210,34 +239,90 @@ export function PoolParkPage() {
             </div>
           </div>
 
-          {/* Gallery placeholder */}
+          {/* Gallery */}
           <div className="mb-16">
             <div className="text-center mb-10">
               <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
                 Galerie foto
               </span>
               <h2 className="font-display text-3xl md:text-4xl font-normal tracking-tight">
-                Viața la <em className="not-italic italic text-accent">Pool Park</em>
+                <em className="not-italic italic text-accent">Pool Park</em>
               </h2>
-              <p className="text-text-muted mt-3 max-w-lg mx-auto">
-                În curând — imagini cu piscina, facilitățile și atmosfera de la Astoria Pool Park.
-              </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-accent/5 to-primary/5 border border-dashed border-border flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Waves className="w-10 h-10 text-accent/40 mx-auto mb-3" />
-                  <p className="text-sm text-text-muted/60">Imaginile vor fi adăugate în curând</p>
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-accent/5 to-primary/5 border border-dashed border-border flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Sun className="w-10 h-10 text-accent/40 mx-auto mb-3" />
-                  <p className="text-sm text-text-muted/60">Imaginile vor fi adăugate în curând</p>
-                </div>
-              </div>
+              {poolGalleryImages.map((img, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => openLightbox(index)}
+                  className="relative overflow-hidden rounded-xl cursor-pointer group aspect-[4/3]"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  aria-label={`Deschide imaginea: ${img.alt}`}
+                >
+                  <ImageWithFallback
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full group-hover:scale-105 transition-transform duration-600"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                </motion.button>
+              ))}
             </div>
           </div>
+
+          {/* Lightbox */}
+          <AnimatePresence>
+            {lightboxIndex !== null && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+                onClick={closeLightbox}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Galerie foto lightbox"
+              >
+                <button
+                  onClick={closeLightbox}
+                  className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white"
+                  aria-label="Închide lightbox"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={(e) => { e.stopPropagation(); goPrev() }}
+                  className="absolute left-4 z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white"
+                  aria-label="Imaginea anterioară"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={(e) => { e.stopPropagation(); goNext() }}
+                  className="absolute right-4 z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white"
+                  aria-label="Imaginea următoare"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                <motion.img
+                  key={lightboxIndex}
+                  src={poolGalleryImages[lightboxIndex].src}
+                  alt={poolGalleryImages[lightboxIndex].alt}
+                  className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Events */}
           <div className="bg-gradient-to-br from-primary to-primary-light rounded-2xl p-8 md:p-12 text-center shadow-xl">
