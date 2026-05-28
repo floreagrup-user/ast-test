@@ -35,12 +35,23 @@ export function ContactPage() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
-    // Mock submission - replace with actual API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    console.log('Form data:', data)
-    setIsSubmitting(false)
-    setSubmitted(true)
-    reset()
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!response.ok) {
+        throw new Error('Eroare la trimitere')
+      }
+      setSubmitted(true)
+      reset()
+    } catch (err) {
+      console.error('Form error:', err)
+      alert('A apărut o eroare. Te rugăm să încerci din nou sau să ne contactezi telefonic.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (

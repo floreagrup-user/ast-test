@@ -1,54 +1,47 @@
 export async function onRequestPost(context: any) {
   try {
     const body = await context.request.json()
-    const { name, email, phone, county, message, type } = body
+    const { nume, prenume, email, telefon, subiect, mesaj } = body
 
-    // Validate required fields
-    if (!name || !email) {
+    if (!nume || !email || !mesaj) {
       return new Response(
-        JSON.stringify({ error: 'Name and email are required' }),
+        JSON.stringify({ error: 'Nume, email și mesaj sunt obligatorii' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       )
     }
 
-    // Send email via Resend (or your preferred email service)
-    const RESEND_API_KEY = context.env.RESEND_API_KEY
+    const PHP_URL = context.env.PHP_CONTACT_URL || 'https://astoriahotels.ro/send-contact.php'
 
-    if (RESEND_API_KEY) {
-      await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${RESEND_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: 'Petra Pavaje <contact@petrapavaje.ro>',
-          to: ['contact@petrapavaje.ro'],
-          subject: type === 'quote'
-            ? `Cerere Oferta - ${name}`
-            : `Mesaj de pe site - ${name}`,
-          html: `
-            <h2>Mesaj nou de pe PetraPavaje.ro</h2>
-            <table>
-              <tr><td><strong>Nume:</strong></td><td>${name}</td></tr>
-              <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
-              <tr><td><strong>Telefon:</strong></td><td>${phone || 'Nespecificat'}</td></tr>
-              <tr><td><strong>Judet:</strong></td><td>${county || 'Nespecificat'}</td></tr>
-            </table>
-            <h3>Mesaj:</h3>
-            <p>${message || 'Niciun mesaj'}</p>
-          `,
-        }),
-      })
+    const formData = new URLSearchParams({
+      nume: `${nume} ${prenume || ''}`.trim(),
+      email,
+      telefon: telefon || '',
+      subiect: subiect || 'altele',
+      mesaj,
+    })
+
+    const response = await fetch(PHP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString(),
+    })
+
+    if (!response.ok) {
+      console.error('PHP script error:', await response.text())
+      return new Response(
+        JSON.stringify({ error: 'Eroare la trimiterea emailului' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      )
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: 'Message sent successfully' }),
+      JSON.stringify({ success: true, message: 'Mesaj trimis cu succes' }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
   } catch (error) {
+    console.error('Contact API error:', error)
     return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
+      JSON.stringify({ error: 'Eroare internă de server' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     )
   }
