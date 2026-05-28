@@ -93,8 +93,11 @@ export const rooms: Room[] = [
     fullDescription:
       'Începe dimineața cu o cafea pe balconul propriu, cu vedere directă către grădina interioară și iazul cu pești. Camera Standard 3★ cu Balcon combină confortul unei camere generoase cu liniștea unei mici terase private — un detaliu mic care transformă sejurul. Aceleași dotări premium ca toate camerele Astoria: aer condiționat, Wi-Fi gratuit, TV LCD, baie cu duș.',
     images: [
-      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-14.webp',
-      '/images/rooms/Astoria-dubla1-1.jpg',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-23.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-13.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-12.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-10.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-21.webp',
     ],
     amenities: [
       'Balcon privat',
