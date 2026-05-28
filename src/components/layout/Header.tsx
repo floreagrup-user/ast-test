@@ -28,6 +28,7 @@ const navLinks = [
       { label: 'Botez', to: '/evenimente/botez' },
       { label: 'Majorat', to: '/evenimente/majorat' },
       { label: 'Pool Party', to: '/evenimente/pool-party' },
+      { label: 'Petrecere Copii', to: '/evenimente/petrecere-copii' },
     ],
   },
   { label: 'Contact', to: '/contact' },

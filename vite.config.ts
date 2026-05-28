@@ -25,6 +25,7 @@ export default defineConfig({
         '/evenimente/botez',
         '/evenimente/pool-party',
         '/evenimente/majorat',
+        '/evenimente/petrecere-copii',
         '/sustenabilitate',
         '/welcome-to-alba',
         '/contact',

@@ -16,6 +16,7 @@ const NuntaPage = lazy<LazyPage>(() => import('@/pages/NuntaPage').then(m => ({ 
 const BotezPage = lazy<LazyPage>(() => import('@/pages/BotezPage').then(m => ({ default: m.BotezPage } as { default: LazyPage })))
 const PoolPartyPage = lazy<LazyPage>(() => import('@/pages/PoolPartyPage').then(m => ({ default: m.PoolPartyPage } as { default: LazyPage })))
 const MajoratPage = lazy<LazyPage>(() => import('@/pages/MajoratPage').then(m => ({ default: m.MajoratPage } as { default: LazyPage })))
+const PetrecereCopiiPage = lazy<LazyPage>(() => import('@/pages/PetrecereCopiiPage').then(m => ({ default: m.PetrecereCopiiPage } as { default: LazyPage })))
 const SustainabilityPage = lazy<LazyPage>(() => import('@/pages/SustainabilityPage').then(m => ({ default: m.SustainabilityPage } as { default: LazyPage })))
 const WelcomeToAlbaPage = lazy<LazyPage>(() => import('@/pages/WelcomeToAlbaPage').then(m => ({ default: m.WelcomeToAlbaPage } as { default: LazyPage })))
 const ContactPage = lazy<LazyPage>(() => import('@/pages/ContactPage').then(m => ({ default: m.ContactPage } as { default: LazyPage })))
@@ -58,6 +59,7 @@ export function AppRoutes() {
         <Route path="/evenimente/botez" element={<BotezPage />} />
         <Route path="/evenimente/pool-party" element={<PoolPartyPage />} />
         <Route path="/evenimente/majorat" element={<MajoratPage />} />
+        <Route path="/evenimente/petrecere-copii" element={<PetrecereCopiiPage />} />
         <Route path="/sustenabilitate" element={<SustainabilityPage />} />
         <Route path="/welcome-to-alba" element={<WelcomeToAlbaPage />} />
         <Route path="/contact" element={<ContactPage />} />
