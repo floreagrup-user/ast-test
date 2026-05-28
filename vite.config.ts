@@ -24,6 +24,7 @@ export default defineConfig({
         '/evenimente/nunta',
         '/evenimente/botez',
         '/evenimente/pool-party',
+        '/evenimente/majorat',
         '/sustenabilitate',
         '/welcome-to-alba',
         '/contact',

@@ -26,6 +26,7 @@ const navLinks = [
     children: [
       { label: 'Nuntă', to: '/evenimente/nunta' },
       { label: 'Botez', to: '/evenimente/botez' },
+      { label: 'Majorat', to: '/evenimente/majorat' },
       { label: 'Pool Party', to: '/evenimente/pool-party' },
     ],
   },
