@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
+import { useAnalytics } from '@/hooks/useAnalytics'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { images } from '@/data/images'
 
@@ -49,6 +50,8 @@ export function Header() {
       document.body.style.overflow = ''
     }
   }, [mobileOpen])
+
+  const { trackPhoneCall } = useAnalytics()
 
   return (
     <header
@@ -118,6 +121,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <a
               href="tel:+40731190948"
+              onClick={() => trackPhoneCall('+40731190948')}
               className={`hidden md:flex items-center gap-2 text-sm font-medium transition-colors ${
                 isTransparent
                   ? 'text-white hover:text-accent-light'
@@ -203,6 +207,7 @@ export function Header() {
                 <div className="mt-8 space-y-4">
                   <a
                     href="tel:+40731190948"
+                    onClick={() => trackPhoneCall('+40731190948')}
                     className="flex items-center gap-2 text-primary font-medium"
                   >
                     <Phone className="w-4 h-4" />

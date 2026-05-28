@@ -7,6 +7,7 @@ import { Phone, Mail, MapPin, CheckCircle, Loader2 } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Layout } from '@/components/layout/Layout'
 import { contactFormSchema, type ContactFormData } from '@/lib/schemas'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 const subjects = [
   { value: 'rezervare-camera', label: 'Rezervare cameră' },
@@ -33,7 +34,10 @@ export function ContactPage() {
     },
   })
 
+  const { trackFormSubmit, trackPhoneCall } = useAnalytics()
+
   const onSubmit = async (data: ContactFormData) => {
+    trackFormSubmit(data.subiect)
     setIsSubmitting(true)
     try {
       const response = await fetch('/api/contact', {
@@ -88,7 +92,11 @@ export function ContactPage() {
               <h2 className="font-display text-2xl font-normal mb-8">Informații de contact</h2>
               <ul className="space-y-6 mb-10">
                 <li>
-                  <a href="tel:+40731190948" className="flex items-start gap-4 group">
+                  <a
+                    href="tel:+40731190948"
+                    onClick={() => trackPhoneCall('+40731190948')}
+                    className="flex items-start gap-4 group"
+                  >
                     <div className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
                       <Phone className="w-5 h-5 text-primary" />
                     </div>

@@ -1,5 +1,6 @@
-import { lazy, Suspense, type ComponentType } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { lazy, Suspense, useEffect, type ComponentType } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 type LazyPage = ComponentType
 
@@ -30,6 +31,14 @@ function LoadingFallback() {
 }
 
 export function AppRoutes() {
+  const location = useLocation()
+  const { trackPageView } = useAnalytics()
+
+  useEffect(() => {
+    const title = document.title || 'Hotel Astoria Alba Iulia'
+    trackPageView(location.pathname, title)
+  }, [location.pathname, trackPageView])
+
   return (
     <Suspense fallback={<LoadingFallback />}>
       <Routes>

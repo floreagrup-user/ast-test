@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Shield, BarChart3, Megaphone, Settings } from 'lucide-react'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 interface CookiePreferences {
   functional: boolean
@@ -30,14 +31,21 @@ export function CookieConsent() {
     }
   }, [])
 
+  const { updateConsent } = useAnalytics()
+
   const saveConsent = (prefs: CookiePreferences) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs))
     setVisible(false)
 
-    if (prefs.statistics) {
-      // Inject Google Analytics / GTM here
-      console.log('Google Analytics enabled')
-    }
+    updateConsent({
+      analytics_storage: prefs.statistics ? 'granted' : 'denied',
+      ad_storage: prefs.marketing ? 'granted' : 'denied',
+      ad_user_data: prefs.marketing ? 'granted' : 'denied',
+      ad_personalization: prefs.marketing ? 'granted' : 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: prefs.preferences ? 'granted' : 'denied',
+      security_storage: 'granted',
+    })
   }
 
   const acceptAll = () => {

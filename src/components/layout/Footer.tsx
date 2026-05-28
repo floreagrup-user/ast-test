@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Phone, Mail, MapPin, ChevronDown } from 'lucide-react'
 import { images } from '@/data/images'
 import { cn } from '@/lib/utils'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 const footerLinks = {
   hotel: [
@@ -79,6 +80,7 @@ export function Footer() {
     informatii: false,
   })
 
+  const { trackPhoneCall } = useAnalytics()
   const toggle = (key: string) =>
     setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }))
 
@@ -144,13 +146,14 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="tel:+40731190948"
-                  className="flex items-start gap-3 text-sm text-white/60 hover:text-accent transition-colors"
-                >
-                  <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                  <span>+40 731 190 948</span>
-                </a>
+                  <a
+                    href="tel:+40731190948"
+                    onClick={() => trackPhoneCall('+40731190948')}
+                    className="flex items-start gap-3 text-sm text-white/60 hover:text-accent transition-colors"
+                  >
+                    <Phone className="w-4 h-4 mt-0.5 shrink-0" />
+                    <span>+40 731 190 948</span>
+                  </a>
               </li>
               <li>
                 <a
