@@ -204,7 +204,7 @@ export function MajoratPage() {
       {/* Intro */}
       <section className="bg-primary py-20 md:py-24 text-center">
         <div className="w-15 h-px bg-accent mx-auto mb-8" />
-        <p className="font-display text-xl md:text-2xl font-light italic text-cream max-w-[740px] mx-auto px-6 leading-relaxed">
+        <p className="font-display text-xl md:text-2xl font-light italic text-accent max-w-[740px] mx-auto px-6 leading-relaxed">
           Majoratul merită să fie sărbătorit la superlativ! La <strong className="not-italic font-semibold text-accent-light">Hotel Astoria din Alba Iulia</strong>, organizăm <strong className="not-italic font-semibold text-accent-light">petreceri de majorat memorabile</strong>, într-o locație modernă, cu spații premium și atmosferă de distracție totală.
         </p>
       </section>
