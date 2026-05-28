@@ -62,8 +62,11 @@ export const rooms: Room[] = [
     fullDescription:
       'Camera Standard 3★ îți oferă confortul de care ai nevoie după o zi plină. Spațiul generos, mobilierul ales cu grijă și vederea către grădina interioară creează o atmosferă liniștită, perfectă pentru un somn odihnitor sau pentru un sejur de business. Toate camerele beneficiază de aer condiționat, Wi-Fi gratuit, TV LCD și baie privată cu duș.',
     images: [
-      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-2.webp',
-      '/images/rooms/Astoria-dubla1-1.jpg',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-25.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-15.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-19.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-24.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-21.webp',
     ],
     amenities: [
       'TV LCD',
