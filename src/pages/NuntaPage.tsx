@@ -236,7 +236,7 @@ export function NuntaPage() {
           </h2>
           <div className="w-12 h-px bg-accent mx-auto mt-5" />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1" style={{ gridAutoRows: '280px' }}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1">
           {galleryImages.map((src, i) => {
             const isDouble = i === 0 || i === 8 || i === 16
             const isWide = i === 4 || i === 13
@@ -247,8 +247,9 @@ export function NuntaPage() {
                   i === 0 ? 'col-span-2 row-span-2' : ''
                 } ${isWide ? 'md:col-span-2' : ''} ${
                   isDouble && i !== 0 ? 'md:col-span-2 md:row-span-2' : ''
+                } ${i === 0 ? 'h-[560px]' : 'h-[280px]'} ${
+                  isDouble && i !== 0 ? 'md:h-[560px]' : ''
                 }`}
-                style={{ minHeight: isDouble ? '560px' : '280px' }}
                 onClick={() => openLb(i)}
               >
                 <div className="absolute inset-0 bg-[#EDE7DC]" />
