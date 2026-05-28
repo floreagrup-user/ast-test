@@ -18,7 +18,7 @@ const features = [
       'Investițiile în energie verde reprezintă o direcție strategică pe termen lung, Hotel Astoria având obiective ambițioase în privința performanței ESG (Environment – Social – Governance).',
       'În 2025, hotelul a suplimentat capacitatea sistemului fotovoltaic de la 40 kW la 130 kW, diminuând dependența de energia din rețea și reducând corespunzător emisiile de CO₂ asociate.',
     ],
-    image: 'https://astoriahotels.ro/wp-content/uploads/2026/02/panouri-fotovoltaice-Hotel-Astoria.jpg',
+    image: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate6.webp',
     alt: 'Panouri fotovoltaice Hotel Astoria',
     reverse: false,
     dark: false,
@@ -30,7 +30,7 @@ const features = [
       'Piscina de 336 mp, cea mai mare din județ, este dotată cu un sistem de filtrare a apei cu ajutorul sării, un element esențial pentru un hotel verde. Acest tip de sistem reduce semnificativ utilizarea substanțelor chimice agresive, având un impact mai mic asupra mediului înconjurător.',
       'Filtrarea cu sare contribuie și la un consum mai eficient al resurselor, deoarece apa necesită mai puține înlocuiri și tratamente chimice frecvente. Astfel, se reduc atât cantitatea de deșeuri chimice eliminate, cât și amprenta ecologică a hotelului.',
     ],
-    image: 'https://astoriahotels.ro/wp-content/uploads/2026/02/solutii-invizibile-.jpg',
+    image: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate5.webp',
     alt: 'Soluții invizibile Hotel Astoria',
     reverse: true,
     dark: true,
@@ -42,7 +42,7 @@ const features = [
       'Ca o măsură suplimentară, hotelul și-a extins flota de autoturisme electrice utilizate în activitățile operaționale, renunțând la autoturismele alimentate de combustibil fosil în favoarea celor cu emisii zero.',
       'Tot în 2025, locația și-a modernizat infrastructura de încărcare, prin upgrade-ul stațiilor electrice, consolidând astfel angajamentul față de eficiență energetică și mobilitate sustenabilă.',
     ],
-    image: 'https://astoriahotels.ro/wp-content/uploads/2026/02/filtrare-ecologica-Hotel-Astoria.jpg',
+    image: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate11.webp',
     alt: 'Filtrare ecologică Hotel Astoria',
     reverse: false,
     dark: false,
@@ -54,7 +54,7 @@ const features = [
       'Dincolo de măsurile vizibile, există investiții majore în amenajarea complexului hotelier care asigură sustenabilitatea locației fără a fi neapărat vizibile turiștilor.',
       'Vorbim despre o soluție de pavare a spațiilor pietonale și de parcare care asigură un drenaj optim al apelor pluviale, cu un raport ideal între zona pavată și zona verde. De asemenea, sistemul de încălzire a apei din piscină funcționează cu ajutorul energiei solare.',
     ],
-    image: 'https://astoriahotels.ro/wp-content/uploads/2026/02/mobilitate.jpg',
+    image: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate1.webp',
     alt: 'Mobilitate sustenabilă Hotel Astoria',
     reverse: true,
     dark: true,
@@ -62,11 +62,11 @@ const features = [
 ]
 
 const galleryImages = [
-  { src: 'https://astoriahotels.ro/wp-content/uploads/2026/02/imag-6.jpg', alt: 'Hotel Astoria - Vedere generală' },
-  { src: 'https://astoriahotels.ro/wp-content/uploads/2026/02/imag-10.jpg', alt: 'Hotel Astoria - Ecosistem natural' },
-  { src: 'https://astoriahotels.ro/wp-content/uploads/2026/02/imag-7.jpg', alt: 'Hotel Astoria - Livadă' },
-  { src: 'https://astoriahotels.ro/wp-content/uploads/2026/02/imag-8.jpg', alt: 'Hotel Astoria - Restaurant' },
-  { src: 'https://astoriahotels.ro/wp-content/uploads/2026/02/imag-9.jpg', alt: 'Hotel Astoria - Natură' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate10.webp', alt: 'Hotel Astoria - Vedere generală' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate9.webp', alt: 'Hotel Astoria - Ecosistem natural' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate8.webp', alt: 'Hotel Astoria - Livadă' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate5.webp', alt: 'Hotel Astoria - Restaurant' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate3.webp', alt: 'Hotel Astoria - Natură' },
 ]
 
 function AnimateOnScroll({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -108,7 +108,7 @@ export function SustainabilityPage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary-light to-[#5a8a76]">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://astoriahotels.ro/wp-content/uploads/2026/02/sustenabilitate-web1.jpg')" }}
+          style={{ backgroundImage: "url('https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/articole/sustenabilitate2.webp')" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-primary/75 via-primary-light/60 to-[#5a8a76]/50" />
         </div>
