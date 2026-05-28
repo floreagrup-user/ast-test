@@ -51,12 +51,16 @@ export function ContactPage() {
       </Helmet>
 
       {/* Hero */}
-      <section className="relative h-[30vh] min-h-[200px] flex items-end pb-8 overflow-hidden">
-        <div className="absolute inset-0 bg-primary" />
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: 'radial-gradient(circle at 25% 25%, white 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }} />
+      <section className="relative h-[40vh] min-h-[300px] flex items-end pb-12 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie21.webp"
+            alt="Hotel Astoria"
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        </div>
         <div className="relative container-xl z-10">
           <h1 className="font-display text-4xl md:text-5xl font-normal text-white tracking-tight">
             Contactează-ne
