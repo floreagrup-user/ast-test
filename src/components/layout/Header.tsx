@@ -20,7 +20,13 @@ const navLinks = [
   },
   { label: 'Restaurant', to: '/restaurant' },
   { label: 'Pool Park', to: '/pool-park' },
-  { label: 'Evenimente', to: '/evenimente' },
+  {
+    label: 'Evenimente',
+    to: '/evenimente',
+    children: [
+      { label: 'Nuntă', to: '/evenimente/nunta' },
+    ],
+  },
   { label: 'Contact', to: '/contact' },
 ]
 

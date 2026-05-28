@@ -21,6 +21,7 @@ export default defineConfig({
         '/pool-park',
         '/pool-park/meniu',
         '/evenimente',
+        '/evenimente/nunta',
         '/sustenabilitate',
         '/welcome-to-alba',
         '/contact',
