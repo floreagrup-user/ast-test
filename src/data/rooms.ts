@@ -26,9 +26,11 @@ export const rooms: Room[] = [
       'Apartamentul Astoria vă propune o experiență de neuitat. Oaspeții se pot relaxa într-o ambianță unde confortul și funcționalitatea au fost gândite pentru a permite o evadare reală din cotidian. Cu o cotație de 4 stele, apartamentul oferă toate facilitățile premium: minibar, TV LCD, aer condiționat, baie proprie cu duș, telefon și Wi-Fi gratuit. Clienții noștri beneficiază de un mic dejun bogat și acces la Astoria Pool Park.',
     images: [
       'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-7.webp',
-      '/images/rooms/Astoria-apartament02.jpg',
-      '/images/rooms/astoria-camera-apartament-1.jpg',
-      '/images/rooms/astoria-camera-apartament-2.jpg',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-17.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-4.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-5.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-8.webp',
+      'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-6.webp',
     ],
     amenities: [
       'Minibar',
