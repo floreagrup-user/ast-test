@@ -1,0 +1,5 @@
+name = "astoria-hotel"
+compatibility_date = "2024-01-01"
+
+[vars]
+PHP_CONTACT_URL = "https://astoriahotels.ro/send-contact.php"
