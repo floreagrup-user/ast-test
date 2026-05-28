@@ -114,13 +114,13 @@ export function Header() {
                     <motion.div
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="bg-white/10 backdrop-blur-md rounded-sm shadow-lg border border-white/20 py-2 min-w-52"
+                      className="bg-white/80 backdrop-blur-md rounded-sm shadow-lg border border-border py-2 min-w-52"
                     >
                       {link.children.map((child) => (
                         <Link
                           key={child.to}
                           to={child.to}
-                          className="block px-4 py-2.5 text-sm text-white hover:bg-white/10 hover:text-accent-light transition-colors"
+                          className="block px-4 py-2.5 text-sm text-text hover:bg-primary/5 hover:text-primary transition-colors"
                         >
                           {child.label}
                         </Link>
