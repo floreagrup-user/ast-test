@@ -185,7 +185,7 @@ export function NuntaPage() {
       {/* Intro */}
       <section className="bg-primary py-20 md:py-24 text-center">
         <div className="w-15 h-px bg-accent mx-auto mb-8" />
-        <p className="font-display text-xl md:text-2xl font-light italic text-cream max-w-[720px] mx-auto px-6 leading-relaxed">
+        <p className="font-display text-xl md:text-2xl font-light italic text-accent max-w-[720px] mx-auto px-6 leading-relaxed">
           Alege să organizezi nunta la <strong className="not-italic font-semibold text-accent-light">Hotel Astoria din Alba Iulia</strong>. Locația noastră îmbină rafinamentul și serviciile premium, fiind alegerea ideală pentru viitorii miri care își doresc o nuntă elegantă, fără compromisuri și fără mari bătăi de cap.
         </p>
       </section>
@@ -311,7 +311,7 @@ export function NuntaPage() {
           <span className="text-xs font-medium tracking-[0.25em] uppercase text-accent block mb-3">
             Pachet de nunță
           </span>
-          <h2 className="font-display text-3xl md:text-5xl font-light text-cream">
+          <h2 className="font-display text-3xl md:text-5xl font-light text-accent">
             Beneficii <em className="italic text-accent-light">exclusive</em>
           </h2>
           <div className="w-12 h-px bg-accent mx-auto mt-5" />
