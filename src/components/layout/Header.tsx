@@ -110,13 +110,13 @@ export function Header() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
-                    className="absolute top-full left-0 mt-1 bg-white/85 backdrop-blur-lg rounded-sm shadow-lg border border-white/30 py-2 min-w-52"
+                    className="absolute top-full left-0 mt-1 bg-white/10 backdrop-blur-md rounded-sm shadow-lg border border-white/20 py-2 min-w-52"
                   >
                     {link.children.map((child) => (
                       <Link
                         key={child.to}
                         to={child.to}
-                        className="block px-4 py-2.5 text-sm text-accent hover:bg-accent/10 hover:text-primary transition-colors"
+                        className="block px-4 py-2.5 text-sm text-white hover:bg-white/10 hover:text-accent-light transition-colors"
                       >
                         {child.label}
                       </Link>
