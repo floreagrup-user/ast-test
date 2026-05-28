@@ -10,9 +10,12 @@ const heroSlides = [
   'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria11.webp',
 ]
 
-const galleryImages = Array.from({ length: 20 }, (_, i) =>
-  `https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria${i + 1}.webp`
-)
+const galleryImages = [
+  ...Array.from({ length: 20 }, (_, i) =>
+    `https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria${i + 1}.webp`
+  ),
+  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/restaurant-6.webp',
+]
 
 const features = [
   {
@@ -233,7 +236,7 @@ export function NuntaPage() {
           </h2>
           <div className="w-12 h-px bg-accent mx-auto mt-5" />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1" style={{ gridAutoRows: '220px' }}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1" style={{ gridAutoRows: '280px' }}>
           {galleryImages.map((src, i) => {
             const isDouble = i === 0 || i === 8 || i === 16
             const isWide = i === 4 || i === 13
@@ -245,7 +248,7 @@ export function NuntaPage() {
                 } ${isWide ? 'md:col-span-2' : ''} ${
                   isDouble && i !== 0 ? 'md:col-span-2 md:row-span-2' : ''
                 }`}
-                style={{ minHeight: isDouble ? '440px' : '220px' }}
+                style={{ minHeight: isDouble ? '560px' : '280px' }}
                 onClick={() => openLb(i)}
               >
                 <div className="absolute inset-0 bg-[#EDE7DC]" />
