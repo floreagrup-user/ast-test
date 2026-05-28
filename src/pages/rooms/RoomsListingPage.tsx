@@ -36,6 +36,7 @@ const hotelGalleryImages = [
   { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-29.webp', alt: 'Hotel Astoria cameră 29' },
   { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-28.webp', alt: 'Hotel Astoria cameră 28' },
   { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-7.webp', alt: 'Hotel Astoria cameră 7' },
+  { src: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/camere/camere-22.webp', alt: 'Hotel Astoria cameră 22' },
 ]
 
 export function RoomsListingPage() {
@@ -153,7 +154,7 @@ export function RoomsListingPage() {
           <h2 id="hotel-gallery-title" className="font-display text-3xl md:text-4xl font-normal tracking-tight text-center mb-12">
             Hotel <em className="not-italic italic text-accent">Astoria</em>
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
             {hotelGalleryImages.map((img, index) => (
               <motion.button
                 key={index}
