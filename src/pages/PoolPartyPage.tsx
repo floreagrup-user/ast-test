@@ -188,7 +188,7 @@ export function PoolPartyPage() {
       {/* Intro */}
       <section className="bg-primary py-20 md:py-24 text-center">
         <div className="w-15 h-px mx-auto mb-8" style={{ backgroundColor: '#3DBDD4' }} />
-        <p className="font-display text-xl md:text-2xl font-light italic max-w-[780px] mx-auto px-6 leading-relaxed" style={{ color: '#F8F4EE' }}>
+        <p className="font-display text-xl md:text-2xl font-light italic text-accent max-w-[780px] mx-auto px-6 leading-relaxed">
           De ce să organizezi un eveniment obișnuit când poți să găzduiești un <strong className="not-italic font-semibold" style={{ color: '#3DBDD4' }}>Pool Party memorabil la Hotel Astoria</strong>? Cu o experiență vastă în organizarea petrecerilor în aer liber, echipa Astoria poate transforma orice eveniment <strong className="not-italic font-semibold" style={{ color: '#3DBDD4' }}>într-un party de neuitat</strong>.
         </p>
       </section>
