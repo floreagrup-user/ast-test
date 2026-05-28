@@ -26,7 +26,7 @@ export function PoolBlock() {
           >
             <div className="aspect-[3/4] rounded-sm overflow-hidden">
               <ImageWithFallback
-                src={images.pool.night1}
+                src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-23.webp"
                 alt="Astoria Pool Park noaptea, cu piscină iluminată"
                 className="w-full h-full"
               />

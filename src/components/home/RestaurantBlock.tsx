@@ -50,7 +50,7 @@ export function RestaurantBlock() {
           >
             <div className="aspect-[3/4] rounded-sm overflow-hidden">
               <ImageWithFallback
-                src={images.restaurant.main}
+                src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/restaurant-3.webp"
                 alt="Interior Restaurant Astoria cu vedere la grădina interioară"
                 className="w-full h-full"
               />
