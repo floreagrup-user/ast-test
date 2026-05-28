@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Heart, Presentation, PartyPopper } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
-import { images } from '@/data/images'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
 
 const eventSections = [
@@ -13,7 +12,7 @@ const eventSections = [
     subtitle: 'Spune «DA» într-un cadru de poveste',
     description:
       'Cu lacul, grădina interioară și saloane care găzduiesc până la 150 de invitați, Astoria devine decorul perfect pentru cea mai importantă zi din viața ta. Echipa noastră se ocupă de fiecare detaliu — de la decor și meniu, la cazarea invitaților — astfel încât tu să te concentrezi doar pe a-ți spune povestea.',
-    image: images.hero.wedding,
+    image: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie10.webp',
     imageAlt: 'Nuntă la Hotel Astoria cu lacul în fundal',
   },
   {
@@ -22,7 +21,7 @@ const eventSections = [
     subtitle: 'Profesionalism într-un cadru natural',
     description:
       'Sala de conferințe modernă, complet utilată cu echipamente AV, găzduiește întâlniri de afaceri, training-uri și team-buildinguri într-un cadru profesionist. Pauzele de cafea pe terasa cu vedere la grădină, prânzul în restaurant și activitățile outdoor în Pool Park transformă orice eveniment corporate într-o experiență memorabilă.',
-    image: images.restaurant.interior,
+    image: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie29.webp',
     imageAlt: 'Sală conferințe Hotel Astoria',
   },
   {
@@ -31,7 +30,7 @@ const eventSections = [
     subtitle: 'Fiecare ocazie devine specială',
     description:
       'Botez, majorat, aniversare de căsătorie sau pur și simplu o petrecere de neuitat cu prietenii — Astoria oferă spații versatile, meniuri personalizate și un decor în care fiecare ocazie devine specială.',
-    image: images.restaurant.food,
+    image: 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie4.webp',
     imageAlt: 'Masă festivă la Restaurant Astoria',
   },
 ]
@@ -44,14 +43,14 @@ export function EventsPage() {
         <meta name="description" content="Organizează nunți, conferințe, team-buildinguri și petreceri private la Hotel Astoria Alba Iulia. Spații versatile, meniuri personalizate și echipă dedicată." />
         <meta property="og:title" content="Evenimente la Astoria — Alba Iulia" />
         <meta property="og:description" content="Nunți, conferințe și petreceri private într-un cadru de poveste." />
-        <meta property="og:image" content={`https://astoriahotels.ro${images.hero.wedding}`} />
+        <meta property="og:image" content="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie11.webp" />
       </Helmet>
 
       {/* Hero */}
       <section className="relative h-[50vh] min-h-[350px] flex items-end pb-12 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={images.hero.wedding}
+            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie11.webp"
             alt="Eveniment la Hotel Astoria"
             className="w-full h-full object-cover"
             fetchPriority="high"
