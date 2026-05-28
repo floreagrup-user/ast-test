@@ -4,14 +4,14 @@ import { motion } from 'framer-motion'
 import { Layout } from '@/components/layout/Layout'
 
 const heroSlides = [
-  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria-1.webp',
-  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria-3.webp',
-  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria-7.webp',
-  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria-11.webp',
+  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria1.webp',
+  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria3.webp',
+  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria7.webp',
+  'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria11.webp',
 ]
 
 const galleryImages = Array.from({ length: 20 }, (_, i) =>
-  `https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria-${i + 1}.webp`
+  `https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/nunta-astoria${i + 1}.webp`
 )
 
 const features = [
