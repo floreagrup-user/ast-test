@@ -190,6 +190,17 @@ export function Footer() {
                 Florea Grup
               </a>
             </p>
+            <p>
+              Design și dezvoltare web de{' '}
+              <a
+                href="https://aldeacosmin.ro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                Aldea Cosmin
+              </a>
+            </p>
             <div className="flex items-center gap-4 flex-wrap justify-center">
               {footerLinks.informatii.map((link) => (
                 <Link key={link.to} to={link.to} className="hover:text-accent transition-colors">
