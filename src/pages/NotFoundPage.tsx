@@ -2,14 +2,17 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Home, Search } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
 
 export function NotFoundPage() {
+  const { t } = useTranslation()
+
   return (
     <Layout>
       <Helmet>
-        <title>404 — Pagină negăsită | Hotel Astoria Alba Iulia</title>
-        <meta name="description" content="Pagina căutată nu există. Revino la pagina principală Hotel Astoria Alba Iulia." />
+        <title>{t('notFound.metaTitle')}</title>
+        <meta name="description" content={t('notFound.metaDescription')} />
         <meta name="robots" content="noindex, follow" />
       </Helmet>
 
@@ -25,11 +28,10 @@ export function NotFoundPage() {
               404
             </p>
             <h1 className="font-display text-3xl md:text-4xl font-normal tracking-tight -mt-6 mb-4">
-              Pagină negăsită
+              {t('notFound.title')}
             </h1>
             <p className="text-text-muted leading-relaxed mb-10">
-              Ne pare rău, dar pagina pe care o cauți nu există sau a fost mutată.
-              Te invităm să explorezi celelalte secțiuni ale site-ului nostru.
+              {t('notFound.subtitle')}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
@@ -37,14 +39,14 @@ export function NotFoundPage() {
                 className="inline-flex items-center gap-2 bg-primary text-white font-medium px-6 py-3 rounded-sm hover:bg-primary-light transition-all duration-300"
               >
                 <Home className="w-4 h-4" />
-                Pagina principală
+                {t('notFound.home')}
               </Link>
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 border border-border text-text font-medium px-6 py-3 rounded-sm hover:border-primary hover:text-primary transition-all duration-300"
               >
                 <Search className="w-4 h-4" />
-                Contactează-ne
+                {t('notFound.contact')}
               </Link>
             </div>
           </motion.div>

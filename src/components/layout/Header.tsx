@@ -2,38 +2,12 @@ import { useState, useEffect, useRef, type KeyboardEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
 import { useAnalytics } from '@/hooks/useAnalytics'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { images } from '@/data/images'
 import { cn } from '@/lib/utils'
-
-const navLinks = [
-  { label: 'Acasă', to: '/' },
-  {
-    label: 'Camere',
-    to: '/camere',
-    children: [
-      { label: 'Apartament 4★', to: '/camere/apartament' },
-      { label: 'Standard 3★', to: '/camere/standard' },
-      { label: 'Standard cu Balcon', to: '/camere/standard-balcon' },
-    ],
-  },
-  { label: 'Restaurant', to: '/restaurant' },
-  { label: 'Pool Park', to: '/pool-park' },
-  {
-    label: 'Evenimente',
-    to: '/evenimente',
-    children: [
-      { label: 'Nuntă', to: '/evenimente/nunta' },
-      { label: 'Botez', to: '/evenimente/botez' },
-      { label: 'Majorat', to: '/evenimente/majorat' },
-      { label: 'Pool Party', to: '/evenimente/pool-party' },
-      { label: 'Petrecere Copii', to: '/evenimente/petrecere-copii' },
-    ],
-  },
-  { label: 'Contact', to: '/contact' },
-]
 
 function isLinkActive(linkPath: string, currentPath: string): boolean {
   if (linkPath === '/') return currentPath === '/'
@@ -41,6 +15,7 @@ function isLinkActive(linkPath: string, currentPath: string): boolean {
 }
 
 export function Header() {
+  const { t, i18n } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const { scrollY } = useScrollDirection()
@@ -50,6 +25,33 @@ export function Header() {
   const scrolled = scrollY > 50
   const isTransparent = isHome && !scrolled
   const dropdownRefs = useRef<Record<string, HTMLDivElement | null>>({})
+
+  const navLinks = [
+    { label: t('nav.home'), to: '/' },
+    {
+      label: t('nav.rooms'),
+      to: '/camere',
+      children: [
+        { label: t('nav.roomsChildren.apartment'), to: '/camere/apartament' },
+        { label: t('nav.roomsChildren.standard'), to: '/camere/standard' },
+        { label: t('nav.roomsChildren.standardBalcony'), to: '/camere/standard-balcon' },
+      ],
+    },
+    { label: t('nav.restaurant'), to: '/restaurant' },
+    { label: t('nav.poolPark'), to: '/pool-park' },
+    {
+      label: t('nav.events'),
+      to: '/evenimente',
+      children: [
+        { label: t('nav.eventsChildren.wedding'), to: '/evenimente/nunta' },
+        { label: t('nav.eventsChildren.baptism'), to: '/evenimente/botez' },
+        { label: t('nav.eventsChildren.coming'), to: '/evenimente/majorat' },
+        { label: t('nav.eventsChildren.poolParty'), to: '/evenimente/pool-party' },
+        { label: t('nav.eventsChildren.kidsParty'), to: '/evenimente/petrecere-copii' },
+      ],
+    },
+    { label: t('nav.contact'), to: '/contact' },
+  ]
 
   useEffect(() => {
     setMobileOpen(false)
@@ -90,6 +92,10 @@ export function Header() {
     }
   }
 
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === 'ro' ? 'en' : 'ro')
+  }
+
   return (
     <header
       className={cn(
@@ -102,7 +108,7 @@ export function Header() {
     >
       <div className="container-xl">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-3 z-50" aria-label="Acasă - Hotel Astoria">
+          <Link to="/" className="flex items-center gap-3 z-50" aria-label={t('nav.homeLabel')}>
             <img
               src={images.logo}
               alt="Astoria Hotel Logo"
@@ -113,7 +119,7 @@ export function Header() {
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Navigare principală">
+          <nav className="hidden lg:flex items-center gap-1" aria-label={t('nav.mainNav')}>
             {navLinks.map((link) => {
               const active = isLinkActive(link.to, location.pathname)
               if (!link.children) {
@@ -167,7 +173,7 @@ export function Header() {
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         role="menu"
-                        aria-label={`Submeniu ${link.label}`}
+                        aria-label={`${t('nav.submenu')} ${link.label}`}
                         className="bg-white/95 backdrop-blur-md rounded-sm shadow-lg border border-border py-2 min-w-52"
                       >
                         {link.children.map((child) => {
@@ -196,6 +202,21 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
+            {/* Language switcher */}
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              aria-label={t('common.switchLangLabel')}
+              className={cn(
+                'hidden md:flex items-center text-xs font-semibold tracking-widest px-2.5 py-1 rounded-sm border transition-all duration-200',
+                isTransparent
+                  ? 'border-white/40 text-white/80 hover:border-white hover:text-white'
+                  : 'border-border text-text-muted hover:border-primary hover:text-primary'
+              )}
+            >
+              {t('common.switchLang')}
+            </button>
+
             <a
               href="tel:+40731190948"
               onClick={() => trackPhoneCall('+40731190948')}
@@ -203,7 +224,7 @@ export function Header() {
                 'hidden md:flex items-center gap-2 text-sm font-medium transition-colors',
                 isTransparent ? 'text-white hover:text-accent-light' : 'text-text hover:text-primary'
               )}
-              aria-label="Sună la +40 731 190 948"
+              aria-label={t('nav.phoneLabel')}
             >
               <Phone className="w-4 h-4" />
               0731 190 948
@@ -217,7 +238,7 @@ export function Header() {
                   : 'bg-primary text-white hover:bg-primary-light'
               )}
             >
-              Rezervă
+              {t('common.reserve')}
             </Link>
 
             <button
@@ -226,7 +247,7 @@ export function Header() {
                 'lg:hidden p-2 rounded-sm transition-colors',
                 isTransparent ? 'hover:bg-white/10' : 'hover:bg-primary/5'
               )}
-              aria-label={mobileOpen ? 'Închide meniul' : 'Deschide meniul'}
+              aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
               aria-expanded={mobileOpen}
               aria-controls="mobile-drawer"
             >
@@ -255,10 +276,10 @@ export function Header() {
               className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 overflow-y-auto"
               role="dialog"
               aria-modal="true"
-              aria-label="Meniu navigare"
+              aria-label={t('nav.mobileMenu')}
             >
               <div className="p-6 pt-20">
-                <nav aria-label="Navigare mobilă">
+                <nav aria-label={t('nav.mobileNav')}>
                   {navLinks.map((link) => {
                     const active = isLinkActive(link.to, location.pathname)
                     return (
@@ -294,6 +315,18 @@ export function Header() {
                   })}
                 </nav>
                 <div className="mt-8 space-y-4">
+                  {/* Language switcher mobile */}
+                  <button
+                    type="button"
+                    onClick={toggleLanguage}
+                    className="flex items-center gap-2 text-sm font-semibold text-text-muted hover:text-primary transition-colors"
+                  >
+                    <span className="text-xs tracking-widest border border-border rounded-sm px-2 py-0.5">
+                      {t('common.switchLang')}
+                    </span>
+                    <span>{t('common.switchLangLabel')}</span>
+                  </button>
+
                   <a
                     href="tel:+40731190948"
                     onClick={() => trackPhoneCall('+40731190948')}
@@ -307,7 +340,7 @@ export function Header() {
                     className="block text-center bg-accent text-primary font-medium py-3 rounded-sm hover:bg-accent-light transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
-                    Rezervă acum
+                    {t('common.reserveNow')}
                   </Link>
                 </div>
               </div>
