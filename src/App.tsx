@@ -23,6 +23,7 @@ const ContactPage = lazy<LazyPage>(() => import('@/pages/ContactPage').then(m =>
 const PrivacyPage = lazy<LazyPage>(() => import('@/pages/PrivacyPage').then(m => ({ default: m.PrivacyPage } as { default: LazyPage })))
 const TermsPage = lazy<LazyPage>(() => import('@/pages/TermsPage').then(m => ({ default: m.TermsPage } as { default: LazyPage })))
 const CookiesPage = lazy<LazyPage>(() => import('@/pages/CookiesPage').then(m => ({ default: m.CookiesPage } as { default: LazyPage })))
+const NotFoundPage = lazy<LazyPage>(() => import('@/pages/NotFoundPage').then(m => ({ default: m.NotFoundPage } as { default: LazyPage })))
 
 function LoadingFallback() {
   return (
@@ -66,6 +67,7 @@ export function AppRoutes() {
         <Route path="/politica-confidentialitate" element={<PrivacyPage />} />
         <Route path="/termeni-conditii" element={<TermsPage />} />
         <Route path="/cookies" element={<CookiesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   )
