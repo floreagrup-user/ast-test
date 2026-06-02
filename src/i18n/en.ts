@@ -269,7 +269,7 @@ const en = {
   poolPark: {
     metaTitle: 'Astoria Pool Park — Pool & Relaxation in Alba Iulia',
     metaDescription:
-      'Astoria Pool Park: 336 m² heated pool, 4 slides, outdoor jacuzzi, water bar and activities for the whole family. Hours 09:00–21:00.',
+      'Astoria Pool Park: 336 m² heated pool, 2 slides, outdoor jacuzzi, water bar and activities for the whole family. Hours 09:00–21:00.',
     heroEyebrow: 'Pool Park',
     heroTitle1: 'Astoria',
     heroTitleItalic: 'Pool Park',
@@ -306,7 +306,7 @@ const en = {
     ],
     stats: [
       { value: '336', unit: 'm²', label: 'pool area' },
-      { value: '4', unit: '', label: 'slides' },
+      { value: '2', unit: '', label: 'slides' },
       { value: '28°C', unit: '', label: 'water temperature' },
       { value: '09:00–21:00', unit: '', label: 'daily hours' },
     ],

@@ -269,7 +269,7 @@ const ro = {
   poolPark: {
     metaTitle: 'Astoria Pool Park — Piscină & Relaxare în Alba Iulia',
     metaDescription:
-      'Astoria Pool Park: piscină încălzită 336 mp, 4 tobogane, jacuzzi exterior, water bar și activități pentru toată familia. Program 09:00–21:00.',
+      'Astoria Pool Park: piscină încălzită 336 mp, 2 tobogane, jacuzzi exterior, water bar și activități pentru toată familia. Program 09:00–21:00.',
     heroEyebrow: 'Pool Park',
     heroTitle1: 'Astoria',
     heroTitleItalic: 'Pool Park',
@@ -306,7 +306,7 @@ const ro = {
     ],
     stats: [
       { value: '336', unit: 'mp', label: 'suprafață piscină' },
-      { value: '4', unit: '', label: 'tobogane' },
+      { value: '2', unit: '', label: 'tobogane' },
       { value: '28°C', unit: '', label: 'temperatură apă' },
       { value: '09:00–21:00', unit: '', label: 'program zilnic' },
     ],
