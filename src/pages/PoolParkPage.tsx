@@ -79,12 +79,16 @@ export function PoolParkPage() {
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[450px] flex items-end pb-16 overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp"
-            alt="Astoria Pool Park"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp"
             className="w-full h-full object-cover"
-            fetchPriority="high"
-          />
+          >
+            <source src="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/video/Astoria.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         </div>
         <div className="relative container-xl z-10">
