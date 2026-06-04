@@ -50,7 +50,7 @@ const en = {
   },
   footer: {
     description:
-      'A haven of elegance and comfort in the heart of Transylvania. 20 refined rooms, international restaurant and Astoria Pool Park.',
+      'A haven of elegance and comfort in the heart of Transylvania. 30 refined rooms, international restaurant and Astoria Pool Park.',
     hotel: 'Hotel',
     services: 'Services',
     contactTitle: 'Contact',
@@ -77,7 +77,7 @@ const en = {
     titleItalic: 'elegance',
     title2: 'and comfort',
     subtitle:
-      '20 refined rooms, international restaurant and Astoria Pool Park — everything you need for an unforgettable stay in the heart of Transylvania.',
+      '30 refined rooms, international restaurant and Astoria Pool Park — everything you need for an unforgettable stay in the heart of Transylvania.',
     ctaReserve: 'Book now',
     ctaRooms: 'Discover rooms',
     slideLabel: 'Slide',
@@ -155,7 +155,7 @@ const en = {
   homePage: {
     metaTitle: 'Hotel Astoria Alba Iulia — Elegance and Comfort in Transylvania',
     metaDescription:
-      'Hotel Astoria Alba Iulia — 20 comfortable rooms, international restaurant and Astoria Pool Park. 3★ and 4★ accommodation in the heart of Transylvania. Book now.',
+      'Hotel Astoria Alba Iulia — 30 comfortable rooms, international restaurant and Astoria Pool Park. 3★ and 4★ accommodation in the heart of Transylvania. Book now.',
   },
   rooms: {
     metaTitle: 'Hotel Astoria Rooms — 3★ and 4★ Accommodation',

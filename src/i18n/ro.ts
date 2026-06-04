@@ -50,7 +50,7 @@ const ro = {
   },
   footer: {
     description:
-      'Un refugiu de eleganță și confort în inima Transilvaniei. 20 de camere rafinate, restaurant internațional și Astoria Pool Park.',
+      'Un refugiu de eleganță și confort în inima Transilvaniei. 30 de camere rafinate, restaurant internațional și Astoria Pool Park.',
     hotel: 'Hotel',
     services: 'Servicii',
     contactTitle: 'Contact',
@@ -77,7 +77,7 @@ const ro = {
     titleItalic: 'eleganță',
     title2: 'și confort',
     subtitle:
-      '20 de camere rafinate, restaurant internațional și Astoria Pool Park — tot ce ai nevoie pentru un sejur de neuitat în inima Transilvaniei.',
+      '30 de camere rafinate, restaurant internațional și Astoria Pool Park — tot ce ai nevoie pentru un sejur de neuitat în inima Transilvaniei.',
     ctaReserve: 'Rezervă acum',
     ctaRooms: 'Descoperă camerele',
     slideLabel: 'Slide',
@@ -155,7 +155,7 @@ const ro = {
   homePage: {
     metaTitle: 'Hotel Astoria Alba Iulia — Eleganță și Confort în Transilvania',
     metaDescription:
-      'Hotel Astoria Alba Iulia — 20 camere confortabile, restaurant internațional și Astoria Pool Park. Cazare 3★ și 4★ în inima Transilvaniei. Rezervă acum.',
+      'Hotel Astoria Alba Iulia — 30 camere confortabile, restaurant internațional și Astoria Pool Park. Cazare 3★ și 4★ în inima Transilvaniei. Rezervă acum.',
   },
   rooms: {
     metaTitle: 'Camere Hotel Astoria Alba Iulia — Cazare 3★ și 4★',

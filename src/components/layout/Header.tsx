@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
-import { useAnalytics } from '@/hooks/useAnalytics'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { images } from '@/data/images'
 import { cn } from '@/lib/utils'
@@ -80,8 +79,6 @@ export function Header() {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [activeDropdown])
-
-  const { trackPhoneCall } = useAnalytics()
 
   const handleDropdownKey = (e: KeyboardEvent<HTMLButtonElement>, to: string) => {
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
@@ -219,7 +216,6 @@ export function Header() {
 
             <a
               href="tel:+40731190948"
-              onClick={() => trackPhoneCall('+40731190948')}
               className={cn(
                 'hidden md:flex items-center gap-2 text-sm font-medium transition-colors',
                 isTransparent ? 'text-white hover:text-accent-light' : 'text-text hover:text-primary'
@@ -329,7 +325,6 @@ export function Header() {
 
                   <a
                     href="tel:+40731190948"
-                    onClick={() => trackPhoneCall('+40731190948')}
                     className="flex items-center gap-2 text-primary font-medium"
                   >
                     <Phone className="w-4 h-4" />

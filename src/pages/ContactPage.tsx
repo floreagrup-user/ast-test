@@ -8,7 +8,6 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
 import { contactFormSchema, type ContactFormData } from '@/lib/schemas'
-import { useAnalytics } from '@/hooks/useAnalytics'
 
 export function ContactPage() {
   const { t } = useTranslation()
@@ -30,10 +29,7 @@ export function ContactPage() {
     },
   })
 
-  const { trackFormSubmit, trackPhoneCall } = useAnalytics()
-
   const onSubmit = async (data: ContactFormData) => {
-    trackFormSubmit(data.subiect)
     setIsSubmitting(true)
     try {
       const response = await fetch('/api/contact', {
@@ -85,7 +81,6 @@ export function ContactPage() {
                 <li>
                   <a
                     href="tel:+40731190948"
-                    onClick={() => trackPhoneCall('+40731190948')}
                     className="flex items-start gap-4 group"
                   >
                     <div className="w-10 h-10 rounded-sm bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
