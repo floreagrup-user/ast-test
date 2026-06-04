@@ -2,12 +2,14 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { Layout } from '@/components/layout/Layout'
 
+const MENU_PDF_URL = 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/Meniu_Restaurant_Astoria_2026.pdf'
+
 export function RestaurantMenuPage() {
   return (
     <Layout>
       <Helmet>
         <title>Meniu Restaurant — Hotel Astoria Alba Iulia</title>
-        <meta name="description" content="Meniul Restaurantului Astoria: preparate din bucătăria internațională, mic dejun bufet, cină à la carte." />
+        <meta name="description" content="Meniul Restaurantului Astoria: preparate din bucătăria internațională, mic dejun bufet, cină à la carte. Descarcă PDF-ul cu meniul complet." />
       </Helmet>
 
       <section className="relative h-[30vh] min-h-[200px] flex items-end pb-8 overflow-hidden">
@@ -27,12 +29,21 @@ export function RestaurantMenuPage() {
           <div className="bg-surface rounded-sm border border-border p-8 md:p-12 text-center">
             <p className="text-text-muted mb-6">
               Meniul nostru se actualizează sezonier pentru a-ți oferi cele mai proaspete ingrediente.
-              Contactează-ne pentru meniul complet sau vizitează restaurantul.
+              Descarcă PDF-ul cu meniul complet sau contactează-ne pentru detalii.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="tel:+40731190948"
+                href={MENU_PDF_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center bg-primary text-white font-medium px-8 py-3 rounded-sm hover:bg-primary-light transition-all"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                PDF Meniu
+              </a>
+              <a
+                href="tel:+40731190948"
+                className="inline-flex items-center border border-border text-primary font-medium px-8 py-3 rounded-sm hover:bg-primary/5 transition-all"
               >
                 Sună pentru meniu
               </a>
