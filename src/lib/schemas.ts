@@ -16,6 +16,7 @@ export const contactFormSchema = z.object({
   gdpr: z.boolean().refine((val) => val === true, {
     message: 'Trebuie să accepți politica de confidențialitate',
   }),
+  hp_field: z.string().max(0, 'Spam detected').optional().or(z.literal('')),
 })
 
 export type ContactFormData = z.infer<typeof contactFormSchema>

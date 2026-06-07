@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { Layout } from '@/components/layout/Layout'
+import { hotel } from '@/data/hotel'
 
 export function PrivacyPage() {
   return (
@@ -15,7 +16,7 @@ export function PrivacyPage() {
           </h1>
           <div className="prose prose-sm max-w-none text-text-muted">
             <p className="mb-4">
-              Hotel Astoria, cu sediul în DN 1, km 387, Alba Iulia, Alba, respectă dreptul la
+              Hotel Astoria, cu sediul în {hotel.address.full}, respectă dreptul la
               protecția datelor personale și se conformează Regulamentului (UE) 2016/679 (GDPR).
             </p>
             <h2 className="font-display text-xl font-normal text-text mt-8 mb-3">
@@ -46,7 +47,7 @@ export function PrivacyPage() {
             <p className="mb-4">
               Ai dreptul de acces, rectificare, ștergere, restricționare a procesării, portabilitate
               și opoziție. Pentru exercitarea acestor drepturi, contactează-ne la
-              office@astoriahotels.ro.
+              {hotel.contact.email.address}.
             </p>
             <h2 className="font-display text-xl font-normal text-text mt-8 mb-3">
               5. Cookies

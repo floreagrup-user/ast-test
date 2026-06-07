@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { Layout } from '@/components/layout/Layout'
+import { hotel } from '@/data/hotel'
 
 const MENU_PDF_URL = 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/Meniu_Restaurant_Astoria_2026.pdf'
 
@@ -42,7 +43,7 @@ export function RestaurantMenuPage() {
                 PDF Meniu
               </a>
               <a
-                href="tel:+40731190948"
+                href={hotel.contact.phone.tel}
                 className="inline-flex items-center border border-border text-primary font-medium px-8 py-3 rounded-sm hover:bg-primary/5 transition-all"
               >
                 Sună pentru meniu

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { rooms } from '@/data/rooms'
 import { Layout } from '@/components/layout/Layout'
-import { SectionTitle } from '@/components/shared/SectionTitle'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
 
 const amenityIcons: Record<string, React.ElementType> = {

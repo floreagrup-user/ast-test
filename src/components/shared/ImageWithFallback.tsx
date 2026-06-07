@@ -12,6 +12,7 @@ export function ImageWithFallback({
   fallback = '/images/placeholder.jpg',
   className,
   loading = 'lazy',
+  decoding = 'async',
   ...props
 }: ImageWithFallbackProps) {
   const [error, setError] = useState(false)
@@ -26,6 +27,7 @@ export function ImageWithFallback({
         src={error ? fallback : src}
         alt={alt}
         loading={loading}
+        decoding={decoding}
         className={cn(
           'w-full h-full object-cover transition-opacity duration-500',
           loaded ? 'opacity-100' : 'opacity-0'

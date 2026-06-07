@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Calendar, Users, Baby, Bed } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 const roomTypes = [
   { value: '', label: 'Toate camerele' },
@@ -12,6 +13,7 @@ const roomTypes = [
 
 export function BookingWidget() {
   const navigate = useNavigate()
+  const { trackCTAClick } = useAnalytics()
   const [formData, setFormData] = useState({
     checkIn: '',
     checkOut: '',
@@ -28,6 +30,7 @@ export function BookingWidget() {
     params.set('adulti', formData.adulti)
     params.set('copii', formData.copii)
     if (formData.tipCamera) params.set('camera', formData.tipCamera)
+    trackCTAClick('booking-widget', `/contact?${params.toString()}`)
     navigate(`/contact?${params.toString()}`)
   }
 

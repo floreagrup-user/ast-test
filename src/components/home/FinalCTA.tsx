@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 export function FinalCTA() {
   const { t } = useTranslation()
+  const { trackCTAClick } = useAnalytics()
 
   return (
     <section className="relative py-20 md:py-28 overflow-hidden" aria-label="Call to action">
@@ -32,6 +34,7 @@ export function FinalCTA() {
           </p>
           <Link
             to="/contact"
+            onClick={() => trackCTAClick('final-cta', '/contact')}
             className="inline-flex items-center bg-accent text-primary font-medium px-10 py-4 rounded-sm hover:bg-accent-light transition-all duration-300 text-lg"
           >
             {t('finalCta.cta')}

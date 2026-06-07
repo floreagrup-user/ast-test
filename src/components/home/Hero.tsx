@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 const heroSlides = [
   'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie28.webp',
@@ -11,6 +12,7 @@ const heroSlides = [
 
 export function Hero() {
   const { t } = useTranslation()
+  const { trackCTAClick } = useAnalytics()
   const [current, setCurrent] = useState(0)
 
   const next = useCallback(() => {
@@ -80,12 +82,14 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               to="/contact"
+              onClick={() => trackCTAClick('hero-reserve', '/contact')}
               className="inline-flex items-center justify-center bg-accent text-primary font-medium px-8 py-3.5 rounded-sm hover:bg-accent-light transition-all duration-300 text-base"
             >
               {t('hero.ctaReserve')}
             </Link>
             <Link
               to="/camere"
+              onClick={() => trackCTAClick('hero-rooms', '/camere')}
               className="inline-flex items-center justify-center border-2 border-white text-white font-medium px-8 py-3.5 rounded-sm hover:bg-white hover:text-primary transition-all duration-300 text-base"
             >
               {t('hero.ctaRooms')}

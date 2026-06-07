@@ -1,7 +1,6 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { motion } from 'framer-motion'
 import useEmblaCarousel from 'embla-carousel-react'
 import {
   Star, Wifi, Wind, Droplets, Coffee, Phone, Tv, ShowerHead, Minus, Clock, Check,
@@ -10,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { rooms } from '@/data/rooms'
 import { Layout } from '@/components/layout/Layout'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
-import { CTAButton } from '@/components/shared/CTAButton'
+import { hotel } from '@/data/hotel'
 
 const amenityIcons: Record<string, React.ElementType> = {
   'Wi-Fi gratuit': Wifi, 'Free Wi-Fi': Wifi,
@@ -201,7 +200,7 @@ export function RoomDetailPage() {
                 </Link>
                 <p className="text-xs text-text-muted mt-3 text-center">
                   {t('roomDetail.orCall')}{' '}
-                  <a href="tel:+40731190948" className="text-primary hover:underline">0731 190 948</a>
+                  <a href={hotel.contact.phone.tel} className="text-primary hover:underline">{hotel.contact.phone.national}</a>
                 </p>
               </div>
             </div>
@@ -215,7 +214,7 @@ export function RoomDetailPage() {
           <div className="container-xl">
             <h2 className="font-display text-2xl font-normal mb-8 text-center">{t('roomDetail.otherRooms')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherRooms.map((r, idx) => {
+              {otherRooms.map((r) => {
                 const otherKey = roomKeys[rooms.findIndex((x) => x.slug === r.slug)] ?? 'standard'
                 return (
                   <Link key={r.slug} to={`/camere/${r.slug}`} className="group block">

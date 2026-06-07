@@ -3,13 +3,16 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 import sitemap from 'vite-plugin-sitemap'
+import { hotelJsonLd } from './vite-plugins/hotel-jsonld'
 
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    hotelJsonLd(),
     sitemap({
       hostname: 'https://astoriahotels.ro',
+      generateRobotsTxt: false,
       routes: [
         '/',
         '/camere',
@@ -49,7 +52,7 @@ export default defineConfig({
           if (id.includes('node_modules/framer-motion')) return 'motion'
           if (id.includes('node_modules/lucide-react')) return 'icons'
           if (id.includes('node_modules/embla-carousel')) return 'embla'
-          if (id.includes('node_modules/@studio-freight/lenis')) return 'lenis'
+          if (id.includes('node_modules/lenis') && !id.includes('embla')) return 'lenis'
           if (id.includes('node_modules/react-helmet-async')) return 'helmet'
           if (id.includes('node_modules/react-hook-form') || id.includes('node_modules/@hookform') || id.includes('node_modules/zod')) return 'forms'
         },

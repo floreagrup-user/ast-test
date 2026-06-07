@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Shield, BarChart3, Megaphone, Settings } from 'lucide-react'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 interface CookiePreferences {
   functional: boolean
@@ -21,6 +22,7 @@ export function CookieConsent() {
     statistics: false,
     marketing: false,
   })
+  const { updateConsent } = useAnalytics()
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY)
@@ -32,6 +34,7 @@ export function CookieConsent() {
 
   const saveConsent = (prefs: CookiePreferences) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs))
+    updateConsent({ statistics: prefs.statistics, marketing: prefs.marketing })
     setVisible(false)
   }
 

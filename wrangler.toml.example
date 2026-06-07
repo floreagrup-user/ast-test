@@ -1,6 +1,23 @@
-name = "petra-pavaje"
-compatibility_date = "2024-01-01"
+# Exemplu de configurare Wrangler pentru Cloudflare Pages.
+# Copiază acest fișier ca `wrangler.toml` (sau `.dev.vars`) și înlocuiește valorile.
+# NU commita `wrangler.toml` cu valori reale dacă folosești secrets.
 
+name = "astoria-hotel"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "dist"
+
+# Variabile non-sensibile (publice). Sunt injectate în Pages Functions ca `context.env`.
 [vars]
-SITE_URL = "https://petrapavaje.ro"
-R2_PUBLIC_URL = "https://images.petrapavaje.ro"
+# URL-ul scriptului PHP care trimite email-uri din formularul de contact.
+# Găzduit pe același domeniu (astoriahotels.ro) — vezi si send-contact.php din rădăcina repo-ului.
+PHP_CONTACT_URL = "https://astoriahotels.ro/send-contact.php"
+# URL public al site-ului — util pentru canonical, OG, sitemap.
+SITE_URL = "https://astoriahotels.ro"
+
+# Secrets (NU pune aici valori reale). Setează-le cu:
+#   wrangler pages secret put <NAME> --project-name=astoria-hotel
+# Exemplu: SMTP credentials, hCaptcha secret, GA4 Measurement Protocol key.
+# [secrets]
+# SMTP_HOST = ""
+# SMTP_USER = ""
+# SMTP_PASS = ""

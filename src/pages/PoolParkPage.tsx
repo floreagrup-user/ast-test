@@ -6,6 +6,7 @@ import { Waves, Droplets, Sun, GlassWater, Umbrella, ShowerHead, Wifi, Volleybal
 import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
+import { hotel } from '@/data/hotel'
 
 const facilityIcons = [Waves, Droplets, Droplets, Sun, Umbrella, ShowerHead, Wifi, Volleyball, Trophy, Table2, GlassWater, GlassWater, Umbrella, Trees, Music]
 
@@ -115,10 +116,10 @@ export function PoolParkPage() {
                 {t('poolParkPage.reserveNow')}
               </Link>
               <a
-                href="tel:+40731190948"
+                href={hotel.contact.phone.tel}
                 className="inline-flex items-center bg-white/10 backdrop-blur-sm text-white font-medium px-8 py-3.5 rounded-full hover:bg-white/20 transition-all duration-300 border border-white/20"
               >
-                0731 190 948
+                {hotel.contact.phone.national}
               </a>
             </div>
           </motion.div>

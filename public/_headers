@@ -9,3 +9,25 @@
 
 /*.css
   Cache-Control: public, max-age=31536000, immutable
+
+/*
+  # HTTPS only — 1 an, includeSubDomains, pregătit pentru HSTS Preload list
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Anti-clickjacking — DENY = nu permite niciun iframe
+  X-Frame-Options: DENY
+
+  # Anti-MIME-sniffing
+  X-Content-Type-Options: nosniff
+
+  # Referrer: trimite origin doar pe cross-origin, none pe HTTPS→HTTPS downgrades
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Blochează API-uri browser nefolosite
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()
+
+  # Content Security Policy
+  # Notă: 'unsafe-inline' pentru script-src e necesar pentru JSON-LD inline din index.html.
+  # TODO pe termen lung: mută JSON-LD la build step (vite-plugin-schema-org) pentru hash-based CSP.
+  # Zaraz e injectat de Cloudflare la edge, deci nu necesită domenii externe în script-src.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev https://astoriahotels.ro; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests

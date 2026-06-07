@@ -8,6 +8,7 @@ import { Layout } from '@/components/layout/Layout'
 import { images } from '@/data/images'
 import { restaurantTestimonials } from '@/data/testimonials'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
+import { hotel } from '@/data/hotel'
 import { SectionTitle } from '@/components/shared/SectionTitle'
 
 const MENU_PDF_URL = 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/Meniu_Restaurant_Astoria_2026.pdf'
@@ -73,16 +74,16 @@ export function RestaurantPage() {
             "@type": "Restaurant",
             "name": "Restaurant Astoria",
             "description": t('restaurant.metaDescription'),
-            "url": "https://astoriahotels.ro/restaurant",
-            "telephone": "+40 731 190 948",
+            "url": hotel.url.restaurant,
+            "telephone": hotel.contact.phone.e164,
             "servesCuisine": "International",
             "openingHours": "Mo-Su 07:00-22:00",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "DN 1, km 387",
-              "addressLocality": "Alba Iulia",
-              "addressRegion": "Alba",
-              "addressCountry": "RO"
+              "streetAddress": hotel.address.street,
+              "addressLocality": hotel.address.city,
+              "addressRegion": hotel.address.county,
+              "addressCountry": hotel.address.countryCode
             },
             "image": `https://astoriahotels.ro${images.restaurant.main}`,
             "priceRange": "$$"
@@ -212,8 +213,8 @@ export function RestaurantPage() {
                 <Phone className="w-6 h-6 text-accent" />
                 <div className="text-left">
                   <p className="text-sm text-white/60">{t('restaurant.reservations')}</p>
-                  <a href="tel:+40731190948" className="font-semibold hover:text-accent transition-colors">
-                    0731 190 948
+                  <a href={hotel.contact.phone.tel} className="font-semibold hover:text-accent transition-colors">
+                    {hotel.contact.phone.national}
                   </a>
                 </div>
               </div>

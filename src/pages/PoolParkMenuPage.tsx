@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { Layout } from '@/components/layout/Layout'
+import { hotel } from '@/data/hotel'
 
 export function PoolParkMenuPage() {
   return (
@@ -37,7 +38,7 @@ export function PoolParkMenuPage() {
                 Înapoi la Pool Park
               </Link>
               <a
-                href="tel:+40731190948"
+                href={hotel.contact.phone.tel}
                 className="inline-flex items-center border border-border text-primary font-medium px-8 py-3 rounded-sm hover:bg-primary/5 transition-all"
               >
                 Sună pentru detalii

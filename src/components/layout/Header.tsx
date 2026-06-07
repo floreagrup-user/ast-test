@@ -5,7 +5,9 @@ import { Menu, X, Phone, ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { useAnalytics } from '@/hooks/useAnalytics'
 import { images } from '@/data/images'
+import { hotel } from '@/data/hotel'
 import { cn } from '@/lib/utils'
 
 function isLinkActive(linkPath: string, currentPath: string): boolean {
@@ -15,6 +17,7 @@ function isLinkActive(linkPath: string, currentPath: string): boolean {
 
 export function Header() {
   const { t, i18n } = useTranslation()
+  const { trackPhoneCall, trackLanguageSwitch, trackCTAClick } = useAnalytics()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const { scrollY } = useScrollDirection()
@@ -53,6 +56,16 @@ export function Header() {
   ]
 
   useEffect(() => {
+    const onPop = () => {
+      setMobileOpen(false)
+      setActiveDropdown(null)
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset on route change is intentional
     setMobileOpen(false)
     setActiveDropdown(null)
   }, [location.pathname])
@@ -90,7 +103,10 @@ export function Header() {
   }
 
   const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'ro' ? 'en' : 'ro')
+    const from = i18n.language
+    const to = from === 'ro' ? 'en' : 'ro'
+    i18n.changeLanguage(to)
+    trackLanguageSwitch(from, to)
   }
 
   return (
@@ -215,7 +231,8 @@ export function Header() {
             </button>
 
             <a
-              href="tel:+40731190948"
+              href={hotel.contact.phone.tel}
+              onClick={() => trackPhoneCall('header')}
               className={cn(
                 'hidden md:flex items-center gap-2 text-sm font-medium transition-colors',
                 isTransparent ? 'text-white hover:text-accent-light' : 'text-text hover:text-primary'
@@ -223,10 +240,11 @@ export function Header() {
               aria-label={t('nav.phoneLabel')}
             >
               <Phone className="w-4 h-4" />
-              0731 190 948
+              {hotel.contact.phone.national}
             </a>
             <Link
               to="/contact"
+              onClick={() => trackCTAClick('header-reserve', '/contact')}
               className={cn(
                 'hidden md:inline-flex text-sm font-medium px-5 py-2.5 rounded-sm transition-all duration-300',
                 isTransparent
@@ -324,11 +342,12 @@ export function Header() {
                   </button>
 
                   <a
-                    href="tel:+40731190948"
+                    href={hotel.contact.phone.tel}
+                    onClick={() => trackPhoneCall('header-mobile')}
                     className="flex items-center gap-2 text-primary font-medium"
                   >
                     <Phone className="w-4 h-4" />
-                    0731 190 948
+                    {hotel.contact.phone.national}
                   </a>
                   <Link
                     to="/contact"

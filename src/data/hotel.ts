@@ -1,0 +1,86 @@
+export const hotel = {
+  name: 'Hotel Astoria',
+  shortName: 'Astoria',
+  tagline: 'Eleganță și Confort în Transilvania',
+  parent: {
+    name: 'Florea Grup',
+    url: 'https://floreagrup.ro',
+  },
+  designer: {
+    name: 'Aldea Cosmin',
+    url: 'https://aldeacosmin.ro',
+  },
+  contact: {
+    phone: {
+      // pentru <a href="tel:...">
+      tel: 'tel:+40731190948',
+      // format E.164 (pentru analytics, API, etc.)
+      e164: '+40731190948',
+      // afișare națională
+      national: '0731 190 948',
+      // afișare internațională
+      international: '+40 731 190 948',
+    },
+    email: {
+      address: 'office@astoriahotels.ro',
+      mailto: 'mailto:office@astoriahotels.ro',
+    },
+  },
+  departments: {
+    events: {
+      email: {
+        address: 'evenimente@astoriahotels.ro',
+        mailto: 'mailto:evenimente@astoriahotels.ro',
+      },
+    },
+  },
+  address: {
+    street: 'DN 1, km 387',
+    city: 'Alba Iulia',
+    county: 'Alba',
+    country: 'România',
+    countryCode: 'RO',
+    postalCode: '',
+    // compuse
+    short: 'DN 1, km 387, Alba Iulia',
+    full: 'DN 1, km 387, Alba Iulia, Alba, România',
+  },
+  geo: {
+    // Coordonate hotel (DN 1, km 387, Alba Iulia)
+    lat: 46.122656,
+    lng: 23.622188,
+  },
+  social: {
+    facebook: 'https://www.facebook.com/AstoriaHotelAlbaIulia',
+    instagram: 'https://www.instagram.com/astoriahotelalba',
+  },
+  legal: {
+    anpcSal: 'https://anpc.ro/ce-este-sal/',
+    anpcSol: 'https://ec.europa.eu/consumers/odr',
+  },
+  url: {
+    base: 'https://astoriahotels.ro',
+    restaurant: 'https://astoriahotels.ro/restaurant',
+    contact: 'https://astoriahotels.ro/contact',
+  },
+} as const
+
+export type Hotel = typeof hotel
+
+export function postalAddress() {
+  return {
+    '@type': 'PostalAddress',
+    streetAddress: hotel.address.street,
+    addressLocality: hotel.address.city,
+    addressRegion: hotel.address.county,
+    addressCountry: hotel.address.countryCode,
+  }
+}
+
+export function geoCoordinates() {
+  return {
+    '@type': 'GeoCoordinates',
+    latitude: hotel.geo.lat,
+    longitude: hotel.geo.lng,
+  }
+}

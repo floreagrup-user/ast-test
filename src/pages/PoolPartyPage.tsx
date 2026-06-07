@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
+import { hotel } from '@/data/hotel'
 
 const base = 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/pooparty-astoria'
 const heroSlides = [`${base}1.webp`, `${base}4.webp`, `${base}7.webp`]
@@ -64,7 +65,7 @@ export function PoolPartyPage() {
             {t('poolParty.heroFullSubtitle')}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.45 }} className="flex gap-4 justify-center flex-wrap">
-            <a href="mailto:evenimente@astoriahotels.ro" className="inline-block text-xs font-medium tracking-[0.12em] uppercase px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200" style={{ color: '#0E1E1A', background: '#F0B429' }}>
+            <a href={hotel.departments.events.email.mailto} className="inline-block text-xs font-medium tracking-[0.12em] uppercase px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200" style={{ color: '#0E1E1A', background: '#F0B429' }}>
               {t('poolParty.heroCta1')}
             </a>
             <a href="#galerie" className="inline-block text-xs font-medium tracking-[0.12em] uppercase text-white px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200 border" style={{ borderColor: 'rgba(61,189,212,.6)' }}>
@@ -176,14 +177,14 @@ export function PoolPartyPage() {
           <div className="flex gap-10 justify-center flex-wrap mb-10">
             <div className="flex flex-col items-center gap-1.5">
               <span className="text-[0.68rem] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,.38)' }}>Email</span>
-              <a href="mailto:evenimente@astoriahotels.ro" className="font-display text-lg transition-colors" style={{ color: '#3DBDD4' }}>evenimente@astoriahotels.ro</a>
+              <a href={hotel.departments.events.email.mailto} className="font-display text-lg transition-colors" style={{ color: '#3DBDD4' }}>{hotel.departments.events.email.address}</a>
             </div>
             <div className="flex flex-col items-center gap-1.5">
               <span className="text-[0.68rem] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,.38)' }}>{t('common.phone')}</span>
-              <a href="tel:+40731190948" className="font-display text-lg transition-colors" style={{ color: '#3DBDD4' }}>0731 190 948</a>
+              <a href={hotel.contact.phone.tel} className="font-display text-lg transition-colors" style={{ color: '#3DBDD4' }}>{hotel.contact.phone.national}</a>
             </div>
           </div>
-          <a href="mailto:evenimente@astoriahotels.ro" className="inline-block text-xs font-medium tracking-[0.12em] uppercase px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200" style={{ color: '#0E1E1A', background: '#F0B429' }}>{t('poolParty.ctaFullBtn')}</a>
+          <a href={hotel.departments.events.email.mailto} className="inline-block text-xs font-medium tracking-[0.12em] uppercase px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200" style={{ color: '#0E1E1A', background: '#F0B429' }}>{t('poolParty.ctaFullBtn')}</a>
         </div>
       </section>
     </Layout>

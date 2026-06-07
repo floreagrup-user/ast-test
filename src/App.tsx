@@ -1,5 +1,7 @@
 import { lazy, Suspense, type ComponentType } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { usePageTracking } from '@/hooks/usePageTracking'
+import { useConsentSync } from '@/hooks/useConsentSync'
 
 type LazyPage = ComponentType
 
@@ -36,6 +38,9 @@ function LoadingFallback() {
 }
 
 export function AppRoutes() {
+  useConsentSync()
+  usePageTracking()
+
   return (
     <Suspense fallback={<LoadingFallback />}>
       <Routes>

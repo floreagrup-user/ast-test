@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
+import { hotel } from '@/data/hotel'
 
 interface Feature {
   num?: string
@@ -130,7 +131,7 @@ export function EventPage({
             className="flex gap-4 justify-center flex-wrap"
           >
             <a
-              href="mailto:evenimente@astoriahotels.ro"
+              href={hotel.departments.events.email.mailto}
               className="inline-block text-xs font-medium tracking-[0.12em] uppercase text-primary bg-accent px-10 py-4 rounded-sm hover:bg-accent-light hover:-translate-y-0.5 transition-all duration-200"
             >
               {t(`${ns}.heroCta1`)}
@@ -330,18 +331,18 @@ export function EventPage({
           <div className="flex gap-10 justify-center flex-wrap mb-10">
             <div className="flex flex-col items-center gap-1.5">
               <span className="text-[0.68rem] tracking-[0.2em] uppercase text-white/45">Email</span>
-              <a href="mailto:evenimente@astoriahotels.ro" className="font-display text-lg text-accent-light hover:text-white transition-colors">
-                evenimente@astoriahotels.ro
+              <a href={hotel.departments.events.email.mailto} className="font-display text-lg text-accent-light hover:text-white transition-colors">
+                {hotel.departments.events.email.address}
               </a>
             </div>
             <div className="flex flex-col items-center gap-1.5">
               <span className="text-[0.68rem] tracking-[0.2em] uppercase text-white/45">{t('common.phone')}</span>
-              <a href="tel:+40731190948" className="font-display text-lg text-accent-light hover:text-white transition-colors">
-                0731 190 948
+              <a href={hotel.contact.phone.tel} className="font-display text-lg text-accent-light hover:text-white transition-colors">
+                {hotel.contact.phone.national}
               </a>
             </div>
           </div>
-          <a href="mailto:evenimente@astoriahotels.ro" className="inline-block text-xs font-medium tracking-[0.12em] uppercase text-primary bg-accent px-10 py-4 rounded-sm hover:bg-accent-light hover:-translate-y-0.5 transition-all duration-200">
+          <a href={hotel.departments.events.email.mailto} className="inline-block text-xs font-medium tracking-[0.12em] uppercase text-primary bg-accent px-10 py-4 rounded-sm hover:bg-accent-light hover:-translate-y-0.5 transition-all duration-200">
             {t(`${ns}.ctaBtn`)}
           </a>
         </div>

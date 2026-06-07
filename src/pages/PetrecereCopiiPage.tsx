@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
+import { hotel } from '@/data/hotel'
 
 const base = 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/evenimente/petrecere-copii-astoria'
 const heroSlides = [`${base}1.webp`, `${base}2.webp`, `${base}3.webp`]
@@ -65,7 +66,7 @@ export function PetrecereCopiiPage() {
             {t('petrecereCopii.heroFullSubtitle')}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.45 }} className="flex gap-4 justify-center flex-wrap">
-            <a href="mailto:evenimente@astoriahotels.ro" className="inline-block text-xs font-medium tracking-[0.12em] uppercase px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200" style={{ color: '#1B3A2F', background: '#F5A623' }}>
+            <a href={hotel.departments.events.email.mailto} className="inline-block text-xs font-medium tracking-[0.12em] uppercase px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200" style={{ color: '#1B3A2F', background: '#F5A623' }}>
               {t('petrecereCopii.heroCta1')}
             </a>
             <a href="#galerie" className="inline-block text-xs font-medium tracking-[0.12em] uppercase text-white px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200 border border-white/50 hover:border-[#FFD080] hover:bg-[rgba(245,166,35,.1)]">
@@ -182,14 +183,14 @@ export function PetrecereCopiiPage() {
           <div className="flex gap-10 justify-center flex-wrap mb-10">
             <div className="flex flex-col items-center gap-1.5">
               <span className="text-[0.68rem] tracking-[0.2em] uppercase text-white/40">Email</span>
-              <a href="mailto:evenimente@astoriahotels.ro" className="font-display text-lg text-accent-light hover:text-white transition-colors">evenimente@astoriahotels.ro</a>
+              <a href={hotel.departments.events.email.mailto} className="font-display text-lg text-accent-light hover:text-white transition-colors">{hotel.departments.events.email.address}</a>
             </div>
             <div className="flex flex-col items-center gap-1.5">
               <span className="text-[0.68rem] tracking-[0.2em] uppercase text-white/40">{t('common.phone')}</span>
-              <a href="tel:+40731190948" className="font-display text-lg text-accent-light hover:text-white transition-colors">0731 190 948</a>
+              <a href={hotel.contact.phone.tel} className="font-display text-lg text-accent-light hover:text-white transition-colors">{hotel.contact.phone.national}</a>
             </div>
           </div>
-          <a href="mailto:evenimente@astoriahotels.ro" className="inline-block text-xs font-medium tracking-[0.12em] uppercase px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200" style={{ color: '#1B3A2F', background: '#F5A623' }}>{t('petrecereCopii.ctaFullBtn')}</a>
+          <a href={hotel.departments.events.email.mailto} className="inline-block text-xs font-medium tracking-[0.12em] uppercase px-10 py-4 rounded-sm hover:-translate-y-0.5 transition-all duration-200" style={{ color: '#1B3A2F', background: '#F5A623' }}>{t('petrecereCopii.ctaFullBtn')}</a>
         </div>
       </section>
 
