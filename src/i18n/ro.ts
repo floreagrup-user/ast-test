@@ -381,6 +381,29 @@ const ro = {
       { value: 'pool-park', label: 'Pool Park' },
       { value: 'altele', label: 'Altele' },
     ],
+    faqTitle: 'Întrebări frecvente',
+    faq: [
+      {
+        question: 'Care este ora de check-in / check-out?',
+        answer: 'Check-in-ul este de la 14:00, iar check-out-ul până la 12:00. Vă rugăm să ne contactați în avans dacă aveți nevoie de aranjamente speciale.',
+      },
+      {
+        question: 'Acceptați animale de companie?',
+        answer: 'Ne pare rău, dar nu acceptăm animale de companie în incinta hotelului.',
+      },
+      {
+        question: 'Este inclus micul dejun în preț?',
+        answer: 'Pentru Apartamentul 4★, micul dejun este inclus. Pentru camerele Standard 3★, micul dejun este disponibil la un cost suplimentar.',
+      },
+      {
+        question: 'Oferiți parcare gratuită?',
+        answer: 'Da, oferim parcare gratuită pentru toți oaspeții noștri, în limita locurilor disponibile.',
+      },
+      {
+        question: 'Am acces la Pool Park dacă nu sunt cazat la hotel?',
+        answer: 'Da, accesul la Pool Park este disponibil și pentru persoanele care nu sunt cazate la hotel. Vă rugăm să ne contactați pentru tarife și disponibilitate.',
+      },
+    ],
   },
   booking: {
     title: 'Rezervare rapidă',

@@ -10,6 +10,7 @@ import { restaurantTestimonials } from '@/data/testimonials'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
 import { hotel } from '@/data/hotel'
 import { SectionTitle } from '@/components/shared/SectionTitle'
+import { buildBreadcrumb } from '@/lib/jsonld'
 
 const MENU_PDF_URL = 'https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/restaurant/Meniu_Restaurant_Astoria_2026.pdf'
 
@@ -71,22 +72,34 @@ export function RestaurantPage() {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Restaurant",
-            "name": "Restaurant Astoria",
-            "description": t('restaurant.metaDescription'),
-            "url": hotel.url.restaurant,
-            "telephone": hotel.contact.phone.e164,
-            "servesCuisine": "International",
-            "openingHours": "Mo-Su 07:00-22:00",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": hotel.address.street,
-              "addressLocality": hotel.address.city,
-              "addressRegion": hotel.address.county,
-              "addressCountry": hotel.address.countryCode
-            },
-            "image": `https://astoriahotels.ro${images.restaurant.main}`,
-            "priceRange": "$$"
+            "@graph": [
+              buildBreadcrumb([
+                { name: 'Hotel Astoria', url: hotel.url.base },
+                { name: 'Restaurant', url: `${hotel.url.base}/restaurant` },
+              ]),
+              {
+                "@type": "Restaurant",
+                "@id": `${hotel.url.base}/restaurant/#restaurant`,
+                "name": "Restaurant Astoria",
+                "description": t('restaurant.metaDescription'),
+                "url": hotel.url.restaurant,
+                "telephone": hotel.contact.phone.e164,
+                "servesCuisine": "International",
+                "openingHours": "Mo-Su 07:00-22:00",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": hotel.address.street,
+                  "addressLocality": hotel.address.city,
+                  "addressRegion": hotel.address.county,
+                  "addressCountry": hotel.address.countryCode,
+                  "postalCode": hotel.address.postalCode
+                },
+                "image": hotel.images.restaurant,
+                "priceRange": "$$",
+                "containedInPlace": { "@id": `${hotel.url.base}/#hotel` },
+                "acceptsReservations": "True"
+              },
+            ]
           })}
         </script>
       </Helmet>

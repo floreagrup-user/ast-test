@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
 import { hotel } from '@/data/hotel'
+import { buildBreadcrumb } from '@/lib/jsonld'
 
 const facilityIcons = [Waves, Droplets, Droplets, Sun, Umbrella, ShowerHead, Wifi, Volleyball, Trophy, Table2, GlassWater, GlassWater, Umbrella, Trees, Music]
 
@@ -75,6 +76,26 @@ export function PoolParkPage() {
         <meta property="og:title" content={t('poolPark.metaTitle')} />
         <meta property="og:description" content={t('poolPark.metaDescription')} />
         <meta property="og:image" content="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/poolpark/poolpark-21.webp" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              buildBreadcrumb([
+                { name: 'Hotel Astoria', url: hotel.url.base },
+                { name: 'Pool Park', url: `${hotel.url.base}/pool-park` },
+              ]),
+              {
+                "@type": ["SportsActivityLocation", "TouristAttraction"],
+                "@id": `${hotel.url.base}/pool-park/#poolpark`,
+                "name": "Astoria Pool Park",
+                "description": t('poolPark.metaDescription'),
+                "url": `${hotel.url.base}/pool-park`,
+                "image": hotel.images.poolpark,
+                "containedInPlace": { "@id": `${hotel.url.base}/#hotel` },
+              },
+            ]
+          })}
+        </script>
       </Helmet>
 
       {/* Hero */}

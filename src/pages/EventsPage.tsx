@@ -5,6 +5,8 @@ import { Heart, Presentation, PartyPopper } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
+import { hotel } from '@/data/hotel'
+import { buildBreadcrumb } from '@/lib/jsonld'
 
 const eventIcons = [Heart, Presentation, PartyPopper]
 const eventImages = [
@@ -30,6 +32,24 @@ export function EventsPage() {
         <meta property="og:title" content={t('events.metaTitle')} />
         <meta property="og:description" content={t('events.metaDescription')} />
         <meta property="og:image" content="https://pub-8638b9dc92c2463b812e5fea5b32e051.r2.dev/general/hotel-astoria-locatie11.webp" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              buildBreadcrumb([
+                { name: 'Hotel Astoria', url: hotel.url.base },
+                { name: 'Evenimente', url: `${hotel.url.base}/evenimente` },
+              ]),
+              {
+                "@type": "EventVenue",
+                "@id": `${hotel.url.base}/evenimente/#eventvenue`,
+                "name": `Hotel ${hotel.shortName} — Evenimente`,
+                "url": `${hotel.url.base}/evenimente`,
+                "containedInPlace": { "@id": `${hotel.url.base}/#hotel` },
+              },
+            ]
+          })}
+        </script>
       </Helmet>
 
       <section className="relative h-[50vh] min-h-[350px] flex items-end pb-12 overflow-hidden">

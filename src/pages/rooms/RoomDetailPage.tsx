@@ -10,6 +10,7 @@ import { rooms } from '@/data/rooms'
 import { Layout } from '@/components/layout/Layout'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
 import { hotel } from '@/data/hotel'
+import { buildBreadcrumb } from '@/lib/jsonld'
 
 const amenityIcons: Record<string, React.ElementType> = {
   'Wi-Fi gratuit': Wifi, 'Free Wi-Fi': Wifi,
@@ -70,6 +71,35 @@ export function RoomDetailPage() {
         <meta property="og:title" content={`${roomName} — Hotel Astoria Alba Iulia`} />
         <meta property="og:description" content={t(`rooms.${roomKey}.shortDescription`)} />
         <meta property="og:image" content={room.images[0]} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              buildBreadcrumb([
+                { name: 'Hotel Astoria', url: hotel.url.base },
+                { name: 'Camere', url: `${hotel.url.base}/camere` },
+                { name: roomName, url: `${hotel.url.base}/camere/${room.slug}` },
+              ]),
+              {
+                "@type": "HotelRoom",
+                "@id": `${hotel.url.base}/camere/${room.slug}/#hotelroom`,
+                "name": roomName,
+                "description": t(`rooms.${roomKey}.shortDescription`),
+                "image": room.images,
+                "numberOfRooms": 1,
+                "occupancy": {
+                  "@type": "QuantitativeValue",
+                  "value": 2,
+                },
+                "amenityFeature": room.amenities.map((a: string) => ({
+                  "@type": "LocationFeatureSpecification",
+                  "name": a,
+                  "value": true,
+                })),
+              },
+            ]
+          })}
+        </script>
       </Helmet>
 
       {/* Hero */}

@@ -14,7 +14,6 @@ export default defineConfig({
       hostname: 'https://astoriahotels.ro',
       generateRobotsTxt: false,
       dynamicRoutes: [
-        '/',
         '/camere',
         '/camere/apartament',
         '/camere/standard',

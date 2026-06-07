@@ -23,13 +23,13 @@
 ## Restaurant
 
 - [Restaurant Astoria](https://astoriahotels.ro/restaurant) — bucătărie internațională
-- [Meniu restaurant](https://astoriahotels.ro/restaurant/menu) — preparate și prețuri
+- [Meniu restaurant](https://astoriahotels.ro/restaurant/meniu) — preparate și prețuri
 - Program: Luni–Duminică 07:00–22:00
 
 ## Astoria Pool Park
 
-- [Astoria Pool Park](https://astoriahotels.ro/poolpark) — piscină încălzită (336 mp, 28°C), 2 tobogane, jacuzzi exterior
-- [Meniu Pool Park](https://astoriahotels.ro/poolpark/menu)
+- [Astoria Pool Park](https://astoriahotels.ro/pool-park) — piscină încălzită (336 mp, 28°C), 2 tobogane, jacuzzi exterior
+- [Meniu Pool Park](https://astoriahotels.ro/pool-park/meniu)
 - Program sezonier: 09:00–21:00
 
 ## Evenimente
@@ -37,7 +37,7 @@
 - [Nunți](https://astoriahotels.ro/evenimente/nunta) — pachete complete (meniu, decor, muzică, foto)
 - [Botezuri](https://astoriahotels.ro/evenimente/botez)
 - [Petreceri copii](https://astoriahotels.ro/petrecere-copii)
-- [Pool Party](https://astoriahotels.ro/poolparty)
+- [Pool Party](https://astoriahotels.ro/evenimente/pool-party)
 - Evenimente corporate și conferințe
 - Email evenimente: evenimente@astoriahotels.ro
 

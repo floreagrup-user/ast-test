@@ -381,6 +381,29 @@ const en = {
       { value: 'pool-park', label: 'Pool Park' },
       { value: 'altele', label: 'Other' },
     ],
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        question: 'What is the check-in / check-out time?',
+        answer: 'Check-in is from 14:00, check-out until 12:00. Please contact us in advance if you need special arrangements.',
+      },
+      {
+        question: 'Do you accept pets?',
+        answer: 'We are sorry, but we do not accept pets in the hotel.',
+      },
+      {
+        question: 'Is breakfast included in the price?',
+        answer: 'For the Apartment 4★, breakfast is included. For Standard 3★ rooms, breakfast is available at an additional cost.',
+      },
+      {
+        question: 'Do you offer free parking?',
+        answer: 'Yes, we offer free parking for all our guests, subject to availability.',
+      },
+      {
+        question: 'Can I access the Pool Park if I am not a hotel guest?',
+        answer: 'Yes, access to Pool Park is available for non-hotel guests as well. Please contact us for rates and availability.',
+      },
+    ],
   },
   booking: {
     title: 'Quick booking',

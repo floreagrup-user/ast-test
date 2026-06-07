@@ -7,9 +7,11 @@ import { Phone, Mail, MapPin, CheckCircle, Loader2 } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Layout } from '@/components/layout/Layout'
+import { FaqAccordion } from '@/components/shared/FaqAccordion'
 import { contactFormSchema, type ContactFormData } from '@/lib/schemas'
 import { useAnalytics } from '@/hooks/useAnalytics'
 import { hotel } from '@/data/hotel'
+import { breadcrumbWithContext, buildFaqPage } from '@/lib/jsonld'
 
 export function ContactPage() {
   const { t } = useTranslation()
@@ -58,6 +60,20 @@ export function ContactPage() {
       <Helmet>
         <title>{t('contact.metaTitle')}</title>
         <meta name="description" content={t('contact.metaDescription')} />
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbWithContext([
+            { name: 'Hotel Astoria', url: hotel.url.base },
+            { name: 'Contact', url: `${hotel.url.base}/contact` },
+          ]))}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(buildFaqPage(
+            (t('contact.faq', { returnObjects: true }) as { question: string; answer: string }[]).map((item) => ({
+              question: item.question,
+              answer: item.answer,
+            }))
+          ))}
+        </script>
       </Helmet>
 
       <section className="relative h-[40vh] min-h-[300px] flex items-end pb-12 overflow-hidden">
@@ -322,6 +338,16 @@ export function ContactPage() {
               )}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="pb-16 md:pb-24">
+        <div className="container-xl">
+          <h2 className="font-display text-2xl font-normal mb-8">{t('contact.faqTitle')}</h2>
+          <FaqAccordion
+            items={t('contact.faq', { returnObjects: true }) as { question: string; answer: string }[]}
+            className="max-w-2xl"
+          />
         </div>
       </section>
     </Layout>

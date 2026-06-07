@@ -1,11 +1,14 @@
 import { useState, useCallback, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Star, Wifi, Wind, Droplets, Coffee, Phone, Tv, ShowerHead, Minus, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { rooms } from '@/data/rooms'
 import { Layout } from '@/components/layout/Layout'
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback'
+import { hotel } from '@/data/hotel'
+import { buildBreadcrumb } from '@/lib/jsonld'
 
 const amenityIcons: Record<string, React.ElementType> = {
   'Wi-Fi gratuit': Wifi,
@@ -94,6 +97,36 @@ export function RoomsListingPage() {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{t('rooms.metaTitle')}</title>
+        <meta name="description" content={t('rooms.metaDescription')} />
+        <meta property="og:title" content={t('rooms.metaTitle')} />
+        <meta property="og:description" content={t('rooms.metaDescription')} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              buildBreadcrumb([
+                { name: 'Hotel Astoria', url: hotel.url.base },
+                { name: 'Camere', url: `${hotel.url.base}/camere` },
+              ]),
+              {
+                "@type": "ItemList",
+                "@id": `${hotel.url.base}/camere/#itemlist`,
+                "name": t('rooms.metaTitle'),
+                "description": t('rooms.metaDescription'),
+                "url": `${hotel.url.base}/camere`,
+                "itemListElement": rooms.map((room, i) => ({
+                  "@type": "ListItem",
+                  "position": i + 1,
+                  "name": room.name,
+                  "url": `${hotel.url.base}/camere/${room.slug}`,
+                })),
+              },
+            ]
+          })}
+        </script>
+      </Helmet>
       <div className="min-h-screen">
         <section className="relative h-[50vh] min-h-[350px] flex items-end pb-12 overflow-hidden">
           <div className="absolute inset-0">
