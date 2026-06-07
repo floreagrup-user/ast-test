@@ -1,4 +1,3 @@
-import { chromium } from 'playwright'
 import { preview } from 'vite'
 import { writeFileSync, mkdirSync } from 'fs'
 import { resolve, dirname } from 'path'
@@ -30,6 +29,15 @@ const ROUTES = [
 const DIST = resolve('dist')
 
 async function prerender() {
+  let chromium
+  try {
+    chromium = (await import('playwright')).chromium
+    await chromium.launch({ headless: true })
+  } catch {
+    console.log('Prerender: Playwright browser not available, skipping.')
+    process.exit(0)
+  }
+
   console.log('Starting Vite preview server...')
   const server = await preview({ preview: { port: 4193, strictPort: true } })
   const base = 'http://localhost:4193'
