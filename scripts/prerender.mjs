@@ -1,42 +1,38 @@
+import { execSync } from 'child_process'
 import { preview } from 'vite'
 import { writeFileSync, mkdirSync } from 'fs'
 import { resolve, dirname } from 'path'
 
 const ROUTES = [
-  '/',
-  '/camere',
-  '/camere/apartament',
-  '/camere/standard',
-  '/camere/standard-balcon',
-  '/restaurant',
-  '/restaurant/meniu',
-  '/pool-park',
-  '/pool-park/meniu',
-  '/evenimente',
-  '/evenimente/nunta',
-  '/evenimente/botez',
-  '/evenimente/pool-party',
-  '/evenimente/majorat',
-  '/evenimente/petrecere-copii',
-  '/sustenabilitate',
-  '/welcome-to-alba',
-  '/contact',
-  '/politica-confidentialitate',
-  '/termeni-conditii',
-  '/cookies',
+  '/', '/camere', '/camere/apartament', '/camere/standard', '/camere/standard-balcon',
+  '/restaurant', '/restaurant/meniu', '/pool-park', '/pool-park/meniu',
+  '/evenimente', '/evenimente/nunta', '/evenimente/botez', '/evenimente/pool-party',
+  '/evenimente/majorat', '/evenimente/petrecere-copii',
+  '/sustenabilitate', '/welcome-to-alba', '/contact',
+  '/politica-confidentialitate', '/termeni-conditii', '/cookies',
 ]
 
 const DIST = resolve('dist')
+
+function ensureBrowser() {
+  try {
+    execSync('npx playwright install chromium', { stdio: 'inherit', timeout: 120000 })
+  } catch {
+    console.log('Could not install Chromium, skipping prerender.')
+    process.exit(0)
+  }
+}
 
 async function prerender() {
   let chromium
   try {
     chromium = (await import('playwright')).chromium
-    await chromium.launch({ headless: true })
   } catch {
-    console.log('Prerender: Playwright browser not available, skipping.')
+    console.log('Prerender: Playwright package not available, skipping.')
     process.exit(0)
   }
+
+  ensureBrowser()
 
   console.log('Starting Vite preview server...')
   const server = await preview({ preview: { port: 4193, strictPort: true } })
