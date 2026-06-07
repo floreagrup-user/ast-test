@@ -107,3 +107,57 @@ export function eventBreadcrumb(eventName: string, eventSlug: string) {
     { name: eventName, url: `${hotel.url.base}/evenimente/${eventSlug}` },
   ])
 }
+
+export function blogBreadcrumb(locale?: string) {
+  const name = locale === 'en' ? 'Blog' : 'Blog'
+  return buildBreadcrumb([
+    { name: 'Hotel Astoria', url: hotel.url.base },
+    { name, url: `${hotel.url.base}/blog` },
+  ])
+}
+
+export function blogArticleBreadcrumb(locale?: string) {
+  const blogName = locale === 'en' ? 'Blog' : 'Blog'
+  const articleName = locale === 'en'
+    ? 'What to visit in Alba Iulia in 24 hours'
+    : 'Ce poți vizita în Alba Iulia în 24 de ore'
+  return buildBreadcrumb([
+    { name: 'Hotel Astoria', url: hotel.url.base },
+    { name: blogName, url: `${hotel.url.base}/blog` },
+    { name: articleName, url: `${hotel.url.base}/blog/ce-pot-vizita-in-alba-iulia-in-24-de-ore` },
+  ])
+}
+
+interface ArticleData {
+  headline: string
+  description: string
+  image: string
+  datePublished: string
+  dateModified: string
+  url: string
+}
+
+export function buildArticle(data: ArticleData) {
+  return {
+    '@type': 'Article',
+    headline: data.headline,
+    description: data.description,
+    image: data.image,
+    datePublished: data.datePublished,
+    dateModified: data.dateModified,
+    author: {
+      '@type': 'Organization',
+      name: 'Hotel Astoria Alba Iulia',
+      url: hotel.url.base,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Hotel Astoria Alba Iulia',
+      url: hotel.url.base,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': data.url,
+    },
+  }
+}

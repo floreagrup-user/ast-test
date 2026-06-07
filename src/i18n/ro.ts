@@ -26,6 +26,7 @@ const ro = {
     restaurant: 'Restaurant',
     poolPark: 'Pool Park',
     events: 'Evenimente',
+    blog: 'Blog',
     contact: 'Contact',
     homeLabel: 'Acasă - Hotel Astoria',
     mainNav: 'Navigare principală',
@@ -64,6 +65,7 @@ const ro = {
       conferences: 'Conferințe',
       teamBuilding: 'Team Building',
       sustainability: 'Sustenabilitate',
+      blog: 'Blog',
       privacy: 'Politica de confidențialitate',
       terms: 'Termeni și condiții',
       cookies: 'Cookies',
@@ -992,6 +994,68 @@ const ro = {
     howToGet: {
       title: 'Cum ajungi',
       text: 'Alba Iulia este situată pe DN1, la aproximativ 90 km de Cluj-Napoca și 280 km de București. Hotelul Astoria se află la km 387 pe DN1, cu acces ușor și parcare gratuită.',
+    },
+  },
+  blog: {
+    metaTitle: 'Blog — Hotel Astoria Alba Iulia',
+    metaDescription: 'Descoperă articole și ghiduri despre Alba Iulia, atracții turistice, recomandări culinare și sfaturi pentru sejurul tău.',
+    eyebrow: 'Blog',
+    title: 'Articole și *ghiduri*',
+    albaIulia24h: {
+      metaTitle: 'Ce poți vizita în Alba Iulia în 24 de ore — Ghid Turistic | Hotel Astoria',
+      metaDescription: 'Descoperă Alba Iulia într-o singură zi: Cetatea Alba Carolina, Catedrala Încoronării, Muzeul Unirii și cazare la Hotel Astoria. Ghid complet cu obiective turistice și recomandări.',
+      headline: 'Ce poți vizita în Alba Iulia în 24 de ore',
+      eyebrow: 'Ghid turistic',
+      intro: 'Alba Iulia, orașul Marii Uniri, este o destinație încărcată de istorie și cultură, perfectă pentru o escapadă de 24 de ore. De la fortificațiile impresionante ale Cetății Alba Carolina la catedralele sale impunătoare și la locurile cochete unde poți savura o cafea sau o masă delicioasă, Alba Iulia oferă o experiență memorabilă. Acest ghid te va ajuta să descoperi cele mai importante atracții și să te bucuri de farmecul orașului într-o singură zi, cu o recomandare specială pentru cazare la Hotel Astoria.',
+      morning: {
+        title: 'Dimineața: O incursiune în istorie la Cetatea Alba Carolina',
+        text1: 'Începe-ți ziua explorând Cetatea Alba Carolina, o capodoperă a arhitecturii militare de tip Vauban, construită în secolul al XVIII-lea. Accesul în cetate este gratuit și permanent, permițându-ți să te plimbi în voie pe aleile sale istorice.',
+        text2: 'Obiective principale în Cetate:',
+        objectivesTitle: 'Obiective principale',
+        objectives: [
+          { name: 'Catedrala Romano-Catolică Sfântul Mihail', desc: 'Cel mai valoros monument de arhitectură romanică și gotică din Transilvania, adăpostește mormintele unor personalități istorice, inclusiv Iancu de Hunedoara. Program: Luni – Duminică, 09:00 – 19:00 (sezon turistic).' },
+          { name: 'Catedrala Încoronării (Catedrala Reîntregirii Neamului)', desc: 'Un simbol al României Mari, unde au fost încoronați Regele Ferdinand I și Regina Maria în 1922.' },
+          { name: 'Muzeul Național al Unirii și Sala Unirii', desc: 'Artefacte și expoziții dedicate istoriei României. Sala Unirii, unde s-a votat unirea Transilvaniei cu România. Program: Marți – Duminică, 10:00 – 18:00. Intrarea în Sala Unirii este liberă. Expozițiile permanente: Adulți – 15 lei.' },
+        ],
+        guardChange: 'Nu rata Schimbul de Gardă de la Poarta a III-a — sâmbăta și duminica la ora 12:00, vinerea la ora 20:00.',
+      },
+      lunch: {
+        title: 'Prânz: Delicii culinare în Cetate',
+        text: 'După o dimineață plină de explorări, este timpul pentru o pauză de prânz. Alba Iulia oferă opțiuni excelente chiar în inima cetății:',
+        venues: [
+          { name: 'Dante Cafe & Dine', desc: 'Situat la intrarea în Cetatea Alba Carolina, apreciat pentru meniul variat și atmosfera primitoare.' },
+          { name: 'Pub 13 — Restaurantul Cetății', desc: 'Cel mai longeviv restaurant din oraș, cu atmosferă medievală autentică și preparate românești tradiționale.' },
+        ],
+      },
+      afternoon: {
+        title: 'După-amiaza: Relaxare și cafea de specialitate',
+        text: 'Continuă-ți după-amiaza cu o plimbare relaxantă și o cafea de specialitate:',
+        venues: [
+          { name: 'Centro Roastery', desc: 'Cafea de specialitate într-o atmosferă modernă și relaxantă — locul ideal pentru a te reîncărca.' },
+        ],
+      },
+      evening: {
+        title: 'Seara: Cină și odihnă la Hotel Astoria Alba Iulia',
+        text1: 'Încheie-ți ziua cu o cină rafinată și o noapte de odihnă la Hotel Astoria Alba Iulia. Situat într-un cadru natural liniștit, hotelul oferă 30 de camere confortabile, un restaurant cu bucătărie internațională și Astoria Pool Park, cu piscină încălzită și jacuzzi exterior.',
+        text2: 'Restaurantul Hotelului Astoria este perfect pentru o cină relaxantă, oferind preparate proaspete și o atmosferă caldă, cu vedere la grădina interioară. Este locul ideal pentru a reflecta asupra experiențelor acumulate pe parcursul zilei în Alba Iulia.',
+      },
+      conclusion: {
+        title: 'Concluzie',
+        text: 'Alba Iulia, cu istoria sa bogată și atmosfera vibrantă, poate fi explorată cu ușurință într-o singură zi. De la monumentele impresionante la experiențele culinare și de relaxare, orașul oferă o călătorie memorabilă. Iar pentru o ședere confortabilă și plină de facilități, Hotel Astoria Alba Iulia este alegerea perfectă pentru a-ți completa experiența în inima Transilvaniei.',
+      },
+      references: {
+        title: 'Referințe',
+        items: [
+          'Cetatea Alba Carolina: program de vizitare și experiențe unice — Transylvania.news',
+          'Catedrala Romano-Catolică „Sfântul Mihail" — Turism.apulum.ro',
+          'Sala Unirii — Turism.apulum.ro',
+          'Ceremonialul schimbului de gardă – Garda Cetății Alba Carolina — Turism.apulum.ro',
+          'Dante Café & Dine | Alba Iulia — Facebook',
+          'PUB 13 — Restaurantul Cetății — Pub13.ro',
+          'CENTRO Roastery — European Coffee Trip',
+          'Hotel Astoria, Alba Iulia — Astoriahotels.ro',
+        ],
+      },
     },
   },
   notFound: {

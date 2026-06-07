@@ -20,6 +20,8 @@ const MajoratPage = lazy<LazyPage>(() => import('@/pages/MajoratPage').then(m =>
 const PetrecereCopiiPage = lazy<LazyPage>(() => import('@/pages/PetrecereCopiiPage').then(m => ({ default: m.PetrecereCopiiPage } as { default: LazyPage })))
 const SustainabilityPage = lazy<LazyPage>(() => import('@/pages/SustainabilityPage').then(m => ({ default: m.SustainabilityPage } as { default: LazyPage })))
 const WelcomeToAlbaPage = lazy<LazyPage>(() => import('@/pages/WelcomeToAlbaPage').then(m => ({ default: m.WelcomeToAlbaPage } as { default: LazyPage })))
+const BlogPage = lazy<LazyPage>(() => import('@/pages/blog/BlogPage').then(m => ({ default: m.BlogPage } as { default: LazyPage })))
+const AlbaIulia24hPage = lazy<LazyPage>(() => import('@/pages/blog/AlbaIulia24hPage').then(m => ({ default: m.AlbaIulia24hPage } as { default: LazyPage })))
 const ContactPage = lazy<LazyPage>(() => import('@/pages/ContactPage').then(m => ({ default: m.ContactPage } as { default: LazyPage })))
 const PrivacyPage = lazy<LazyPage>(() => import('@/pages/PrivacyPage').then(m => ({ default: m.PrivacyPage } as { default: LazyPage })))
 const TermsPage = lazy<LazyPage>(() => import('@/pages/TermsPage').then(m => ({ default: m.TermsPage } as { default: LazyPage })))
@@ -59,6 +61,8 @@ export function AppRoutes() {
         <Route path="/evenimente/petrecere-copii" element={<PetrecereCopiiPage />} />
         <Route path="/sustenabilitate" element={<SustainabilityPage />} />
         <Route path="/welcome-to-alba" element={<WelcomeToAlbaPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/ce-pot-vizita-in-alba-iulia-in-24-de-ore" element={<AlbaIulia24hPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/politica-confidentialitate" element={<PrivacyPage />} />
         <Route path="/termeni-conditii" element={<TermsPage />} />

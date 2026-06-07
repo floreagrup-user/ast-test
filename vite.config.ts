@@ -30,6 +30,8 @@ export default defineConfig({
         '/evenimente/petrecere-copii',
         '/sustenabilitate',
         '/welcome-to-alba',
+        '/blog',
+        '/blog/ce-pot-vizita-in-alba-iulia-in-24-de-ore',
         '/contact',
         '/politica-confidentialitate',
         '/termeni-conditii',

@@ -41,6 +41,7 @@ export function Header() {
     },
     { label: t('nav.restaurant'), to: '/restaurant' },
     { label: t('nav.poolPark'), to: '/pool-park' },
+    { label: t('nav.blog'), to: '/blog' },
     {
       label: t('nav.events'),
       to: '/evenimente',

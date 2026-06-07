@@ -72,6 +72,7 @@ export function Footer() {
   ]
 
   const serviciiLinks = [
+    { label: t('footer.links.blog'), to: '/blog' },
     { label: t('footer.links.weddings'), to: '/evenimente' },
     { label: t('footer.links.conferences'), to: '/evenimente' },
     { label: t('footer.links.teamBuilding'), to: '/evenimente' },

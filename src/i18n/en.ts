@@ -26,6 +26,7 @@ const en = {
     restaurant: 'Restaurant',
     poolPark: 'Pool Park',
     events: 'Events',
+    blog: 'Blog',
     contact: 'Contact',
     homeLabel: 'Home - Hotel Astoria',
     mainNav: 'Main navigation',
@@ -64,6 +65,7 @@ const en = {
       conferences: 'Conferences',
       teamBuilding: 'Team Building',
       sustainability: 'Sustainability',
+      blog: 'Blog',
       privacy: 'Privacy policy',
       terms: 'Terms & conditions',
       cookies: 'Cookies',
@@ -992,6 +994,68 @@ const en = {
     howToGet: {
       title: 'How to get here',
       text: 'Alba Iulia is located on DN1, approximately 90 km from Cluj-Napoca and 280 km from Bucharest. Hotel Astoria is at km 387 on DN1, with easy access and free parking.',
+    },
+  },
+  blog: {
+    metaTitle: 'Blog — Hotel Astoria Alba Iulia',
+    metaDescription: 'Discover articles and guides about Alba Iulia, tourist attractions, culinary recommendations and tips for your stay.',
+    eyebrow: 'Blog',
+    title: 'Articles and *guides*',
+    albaIulia24h: {
+      metaTitle: 'What to Visit in Alba Iulia in 24 Hours — Travel Guide | Hotel Astoria',
+      metaDescription: 'Discover Alba Iulia in one day: Alba Carolina Citadel, Coronation Cathedral, Union Museum and accommodation at Hotel Astoria. Complete guide with attractions and recommendations.',
+      headline: 'What to Visit in Alba Iulia in 24 Hours',
+      eyebrow: 'Travel guide',
+      intro: 'Alba Iulia, the city of the Great Union, is a destination rich in history and culture, perfect for a 24-hour getaway. From the impressive fortifications of the Alba Carolina Citadel to its imposing cathedrals and charming spots where you can enjoy a coffee or a delicious meal, Alba Iulia offers a memorable experience. This guide will help you discover the most important attractions and enjoy the charm of the city in a single day, with a special recommendation for accommodation at Hotel Astoria.',
+      morning: {
+        title: 'Morning: A journey into history at Alba Carolina Citadel',
+        text1: 'Start your day exploring the Alba Carolina Citadel, a masterpiece of Vauban-style military architecture built in the 18th century. Access is free and permanent, allowing you to stroll along its historic alleys.',
+        text2: 'Main attractions within the Citadel:',
+        objectivesTitle: 'Main objectives',
+        objectives: [
+          { name: 'St. Michael\'s Roman Catholic Cathedral', desc: 'The most valuable Romanesque and Gothic architectural monument in Transylvania, housing the tombs of historical figures including Iancu de Hunedoara. Hours: Monday – Sunday, 09:00 – 19:00 (tourist season).' },
+          { name: 'Coronation Cathedral (Cathedral of the Reintegration of the Nation)', desc: 'A symbol of Greater Romania, where King Ferdinand I and Queen Maria were crowned in 1922.' },
+          { name: 'National Museum of the Union and Union Hall', desc: 'Artifacts and exhibitions dedicated to Romanian history. The Union Hall, where the union of Transylvania with Romania was voted. Hours: Tuesday – Sunday, 10:00 – 18:00. Free entry to Union Hall. Permanent exhibitions: Adults – 15 lei.' },
+        ],
+        guardChange: 'Don\'t miss the Guard Change at the Third Gate — Saturdays and Sundays at 12:00, Fridays at 20:00.',
+      },
+      lunch: {
+        title: 'Lunch: Culinary delights in the Citadel',
+        text: 'After a morning full of exploration, it\'s time for a lunch break. Alba Iulia offers excellent options right in the heart of the citadel:',
+        venues: [
+          { name: 'Dante Cafe & Dine', desc: 'Located at the entrance to Alba Carolina Citadel, appreciated for its varied menu and welcoming atmosphere.' },
+          { name: 'Pub 13 — The Citadel\'s Restaurant', desc: 'The longest-running restaurant in the city, with an authentic medieval atmosphere and traditional Romanian dishes.' },
+        ],
+      },
+      afternoon: {
+        title: 'Afternoon: Relaxation and specialty coffee',
+        text: 'Continue your afternoon with a relaxing walk and specialty coffee:',
+        venues: [
+          { name: 'Centro Roastery', desc: 'Specialty coffee in a modern and relaxing atmosphere — the ideal place to recharge.' },
+        ],
+      },
+      evening: {
+        title: 'Evening: Dinner and rest at Hotel Astoria Alba Iulia',
+        text1: 'End your day with a refined dinner and a restful night at Hotel Astoria Alba Iulia. Located in a quiet natural setting, the hotel offers 30 comfortable rooms, an international cuisine restaurant and Astoria Pool Park with a heated pool and outdoor jacuzzi.',
+        text2: 'The Hotel Astoria Restaurant is perfect for a relaxing dinner, offering fresh dishes and a warm atmosphere overlooking the interior garden. It\'s the ideal place to reflect on the experiences of the day in Alba Iulia.',
+      },
+      conclusion: {
+        title: 'Conclusion',
+        text: 'Alba Iulia, with its rich history and vibrant atmosphere, can easily be explored in a single day. From impressive monuments to culinary and relaxation experiences, the city offers a memorable journey. And for a comfortable stay full of amenities, Hotel Astoria Alba Iulia is the perfect choice to complete your experience in the heart of Transylvania.',
+      },
+      references: {
+        title: 'References',
+        items: [
+          'Alba Carolina Citadel: visiting hours and unique experiences — Transylvania.news',
+          'St. Michael\'s Roman Catholic Cathedral — Turism.apulum.ro',
+          'Union Hall — Turism.apulum.ro',
+          'Guard Change Ceremony – Alba Carolina Citadel Guard — Turism.apulum.ro',
+          'Dante Café & Dine | Alba Iulia — Facebook',
+          'PUB 13 — The Citadel\'s Restaurant — Pub13.ro',
+          'CENTRO Roastery — European Coffee Trip',
+          'Hotel Astoria, Alba Iulia — Astoriahotels.ro',
+        ],
+      },
     },
   },
   notFound: {

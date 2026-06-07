@@ -8,6 +8,7 @@ const ROUTES = [
   '/restaurant', '/restaurant/meniu', '/pool-park', '/pool-park/meniu',
   '/evenimente', '/evenimente/nunta', '/evenimente/botez', '/evenimente/pool-party',
   '/evenimente/majorat', '/evenimente/petrecere-copii',
+  '/blog', '/blog/ce-pot-vizita-in-alba-iulia-in-24-de-ore',
   '/sustenabilitate', '/welcome-to-alba', '/contact',
   '/politica-confidentialitate', '/termeni-conditii', '/cookies',
 ]

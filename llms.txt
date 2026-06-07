@@ -1,0 +1,28 @@
+# Hotel Astoria Alba Iulia
+
+> Hotel 3★ în Alba Iulia cu 30 camere, restaurant internațional, Astoria Pool Park și săli de evenimente. Parte a Floreagrup.
+
+## Site structure
+
+- https://astoriahotels.ro — Home
+- https://astoriahotels.ro/camere — Room listing (apartment, standard, standard-balcon)
+- https://astoriahotels.ro/restaurant — International cuisine restaurant
+- https://astoriahotels.ro/pool-park — Heated pool, jacuzzi, water bar
+- https://astoriahotels.ro/evenimente — Events: weddings, baptisms, parties
+- https://astoriahotels.ro/sustenabilitate — Green energy, eco filtration
+- https://astoriahotels.ro/welcome-to-alba — Alba Iulia guide
+- https://astoriahotels.ro/blog — Blog & travel guides
+- https://astoriahotels.ro/blog/ce-pot-vizita-in-alba-iulia-in-24-de-ore — What to visit in Alba Iulia in 24 hours
+- https://astoriahotels.ro/contact — Contact & map
+
+## Key data
+
+- Address: DN 1, km 387, Alba Iulia, Alba, 510010
+- Phone: +40 731 190 948
+- Email: office@astoriahotels.ro
+- Check-in: 14:00, Check-out: 12:00
+- Star rating: 3 (max 5)
+- Pool hours: 09:00–21:00
+- Restaurant hours: 07:00–22:00
+- Parking: Free
+- Languages: RO, EN
