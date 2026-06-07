@@ -13,7 +13,7 @@ export default defineConfig({
     sitemap({
       hostname: 'https://astoriahotels.ro',
       generateRobotsTxt: false,
-      routes: [
+      dynamicRoutes: [
         '/',
         '/camere',
         '/camere/apartament',

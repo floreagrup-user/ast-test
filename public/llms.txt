@@ -1,0 +1,65 @@
+# Hotel Astoria — llms.txt
+
+> Hotel Astoria este un hotel de 3 stele în Alba Iulia, Transilvania, România.
+> 30 de camere, restaurant internațional și Astoria Pool Park.
+> Organizăm nunți, botezuri, petreceri și evenimente corporate.
+> Pentru detalii actualizate, vezi paginile listate mai jos.
+
+## Hotel
+
+- [Hotel Astoria](https://astoriahotels.ro/) — prezentare generală, locație (DN 1, km 387), 30 de camere, facilități
+- [Camere și tarife](https://astoriahotels.ro/camere) — Apartament 4★, Standard 3★, Standard 3★ cu balcon
+- Adresă: DN 1, km 387, Alba Iulia, Alba, România
+- Telefon: +40 731 190 948
+- Email: office@astoriahotels.ro
+- Coordonate GPS: 46.122656, 23.622188
+- Stele: 3★ (cu facilități 4★)
+- Prețuri: $$
+- Animale de companie: nu se acceptă
+- Check-in: 14:00 · Check-out: 12:00
+- Parcare: gratuită
+- Wi-Fi: gratuit
+
+## Restaurant
+
+- [Restaurant Astoria](https://astoriahotels.ro/restaurant) — bucătărie internațională
+- [Meniu restaurant](https://astoriahotels.ro/restaurant/menu) — preparate și prețuri
+- Program: Luni–Duminică 07:00–22:00
+
+## Astoria Pool Park
+
+- [Astoria Pool Park](https://astoriahotels.ro/poolpark) — piscină încălzită (336 mp, 28°C), 2 tobogane, jacuzzi exterior
+- [Meniu Pool Park](https://astoriahotels.ro/poolpark/menu)
+- Program sezonier: 09:00–21:00
+
+## Evenimente
+
+- [Nunți](https://astoriahotels.ro/evenimente/nunta) — pachete complete (meniu, decor, muzică, foto)
+- [Botezuri](https://astoriahotels.ro/evenimente/botez)
+- [Petreceri copii](https://astoriahotels.ro/petrecere-copii)
+- [Pool Party](https://astoriahotels.ro/poolparty)
+- Evenimente corporate și conferințe
+- Email evenimente: evenimente@astoriahotels.ro
+
+## Brand
+
+- Nume oficial: Hotel Astoria (parte din Florea Grup)
+- Site oficial: https://astoriahotels.ro
+- Facebook: https://www.facebook.com/AstoriaHotelAlbaIulia
+- Instagram: https://www.instagram.com/astoriahotelalba
+- Locație Google Maps: https://www.google.com/maps?q=46.122656,23.622188
+
+## FAQ
+
+- Unde se află Hotel Astoria? La DN 1, km 387, Alba Iulia, județul Alba, în inima Transilvaniei.
+- Câte camere are? 30 de camere — Apartament 4★, Standard 3★, Standard 3★ cu balcon.
+- Are restaurant? Da, Restaurant Astoria cu bucătărie internațională, deschis 07:00–22:00.
+- Are piscină? Da, Astoria Pool Park cu piscină încălzită (336 mp, 28°C), 2 tobogane și jacuzzi exterior.
+- Organizează nunți? Da, sală de evenimente cu pachete complete.
+- Cum se rezervă? La telefon +40 731 190 948, email office@astoriahotels.ro, sau prin formularul de contact.
+- Cât costă o noapte? Prețurile variază în funcție de sezon și tip cameră. Vezi pagina de camere pentru tarife.
+
+## Actualizare
+
+Acest fișier este întreținut de Hotel Astoria — Florea Grup.
+Ultima actualizare: 2026-06-07.
